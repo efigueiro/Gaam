@@ -11,5 +11,8 @@ public class Customer implements Serializable {
 	private String fullName;
 	private String phone;
 	private String address;
+	private String city;
+	private String state;
+	private String country;
 
 }

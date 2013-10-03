@@ -55,8 +55,8 @@
         		 <p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
 				<p>
           			<a class="btn btn-lg btn-primary" href="../../components/#navbar"><%=Msg.getProperty("button.appointment")%></a>
+          			<a class="btn btn-lg btn-primary" href="../../components/#navbar"><%=Msg.getProperty("button.login")%></a>
         		</p>
-        	
         	</div>
       	</div>
       </div>
