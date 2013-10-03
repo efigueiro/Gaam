@@ -52,10 +52,10 @@
         <div class="row">
         	<div class="col-md-3"><img src="<%=request.getContextPath()%>/img/stethoscope.png"></div>
         	<div class="col-md-9"><h1><%=Msg.getProperty("application.name")%></h1>
-        		 <p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
+        		<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
 				<p>
           			<a class="btn btn-lg btn-primary" href="../../components/#navbar"><%=Msg.getProperty("button.appointment")%></a>
-          			<a class="btn btn-lg btn-primary" href="../../components/#navbar"><%=Msg.getProperty("button.login")%></a>
+          			<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg"><%=Msg.getProperty("button.login")%></a>
         		</p>
         	</div>
       	</div>
@@ -63,6 +63,23 @@
 
     </div> <!-- /container -->
 
+    <!-- Modal -->
+  	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          			<h4 class="modal-title"><%=Msg.getProperty("title.identification")%></h4>
+        		</div>
+        		<div class="modal-body">
+          			...
+        		</div>
+        		<div class="modal-footer">
+          			<button type="button" class="btn btn-default" data-dismiss="modal"><%=Msg.getProperty("button.close")%></button>
+        		</div>
+      		</div><!-- /.modal-content -->
+    	</div><!-- /.modal-dialog -->
+  	</div><!-- /.modal -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
