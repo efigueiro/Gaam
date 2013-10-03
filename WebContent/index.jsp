@@ -49,8 +49,6 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        
-        
         <div class="row">
         	<div class="col-md-3"><img src="<%=request.getContextPath()%>/img/stethoscope.png"></div>
         	<div class="col-md-9"><h1><%=Msg.getProperty("application.name")%></h1>
