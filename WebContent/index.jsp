@@ -122,10 +122,10 @@
     					<label for="exampleInputPassword1"><%=Msg.getProperty("label.password")%></label>
     					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
   					</div>
-  					<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.enter")%></button>
+  					<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
         		</div>
         		<div class="modal-footer">
-          			<button type="button" class="btn btn-default" data-dismiss="modal"><%=Msg.getProperty("button.close")%></button>
+          			<button type="button" class="btn btn-success" data-dismiss="modal"><%=Msg.getProperty("button.close")%></button>
         		</div>
       		</div>
     	</div>
@@ -138,4 +138,5 @@
     <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
     
   </body>
+  
 </html>
