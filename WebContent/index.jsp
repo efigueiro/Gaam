@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -23,6 +24,7 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
+    
   </head>
 
   <body>
@@ -57,7 +59,7 @@
         		<div class="col-md-9"><h1><%=Msg.getProperty("application.name")%></h1>
         			<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
 					<p>
-          				<a class="btn btn-lg btn-primary" href="../../components/#navbar"><%=Msg.getProperty("button.appointment")%></a>
+          				<a class="btn btn-lg btn-primary" href="<%=request.getContextPath()%>/firstAppointment.jsp"><%=Msg.getProperty("button.appointment")%></a>
           				<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg"><%=Msg.getProperty("button.login")%></a>
         			</p>
         		</div>
@@ -125,7 +127,6 @@
   					<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
         		</div>
         		<div class="modal-footer">
-          			<button type="button" class="btn btn-success" data-dismiss="modal"><%=Msg.getProperty("button.close")%></button>
         		</div>
       		</div>
     	</div>

@@ -52,50 +52,16 @@
 	<!-- Main container
     ================================================== -->
     <div class="container">
-    	<!-- Main component -->
-    	<div class="jumbotron">
-    		<div class="row">
-        		<div class="col-md-3"><img src="<%=request.getContextPath()%>/img/stethoscope.png"></div>
-        		<div class="col-md-9"><h1><%=Msg.getProperty("application.name")%></h1>
-        			<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
-					<p>
-          				<a class="btn btn-lg btn-primary" href="../../components/#navbar"><%=Msg.getProperty("button.appointment")%></a>
-          				<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg"><%=Msg.getProperty("button.login")%></a>
-        			</p>
-        		</div>
-      		</div>
-      	</div>
-    </div> 
-    
-     <!-- Utility belt
-    ================================================== -->
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">Especialidades</div>
-					<div class="panel-body">
-						<p>..diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accums</p>
-					</div>
-				</div>
-			</div>
-  			<div class="col-md-4">
-  				<div class="panel panel-success">
-  					<div class="panel-heading">Convênios</div>
-  					<div class="panel-body">
-						<p>..diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accums</p>
-					</div>
-  				</div>
-  			</div>
-  			<div class="col-md-4">
-  				<div class="panel panel-success">
-  					<div class="panel-heading">Notícias</div>
-  					<div class="panel-body">
-					</div>
-  				</div>
+    	<div class="panel panel-default">
+    		<div class="panel-heading">Agendamento de primeira consulta</div>
+    		<div class="panel-body">
+    			Vamos precisar que você preencha alguns dados referente a consulta médica que você deseja marcar.<br>
+    			Por favor preencha todos os dados abaixo:
+    			
+    			
   			</div>
 		</div>
-	</div>
+    </div> 
     
     <!-- Bottom
     ================================================== -->
@@ -127,7 +93,6 @@
   					<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
         		</div>
         		<div class="modal-footer">
-          			<button type="button" class="btn btn-success" data-dismiss="modal"><%=Msg.getProperty("button.close")%></button>
         		</div>
       		</div>
     	</div>
