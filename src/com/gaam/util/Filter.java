@@ -44,7 +44,7 @@ public class Filter implements javax.servlet.Filter {
 
 		if (authenticated == null) {
 			// Return if user authenticated dont exist...
-			res.sendRedirect("http://localhost:8080/EasyDays/index.jsp");
+			res.sendRedirect("http://localhost:8080/Gaam/index.jsp");
 		} else {
 			// If user exist then continue...
 			chain.doFilter(request, response);

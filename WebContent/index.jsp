@@ -116,15 +116,17 @@
           			<h4 class="modal-title"><%=Msg.getProperty("title.identification")%></h4>
         		</div>
         		<div class="modal-body">
-          			<div class="form-group">
-    					<label for="exampleInputEmail1"><%=Msg.getProperty("label.email")%></label>
-    					<input type="email" class="form-control" id="exampleInputEmail1" placeholder="<%=Msg.getProperty("tip.email")%>">
-  					</div>
-  					<div class="form-group">
-    					<label for="exampleInputPassword1"><%=Msg.getProperty("label.password")%></label>
-    					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
-  					</div>
-  					<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
+        			<form action="/Gaam/login" method="post">
+          				<div class="form-group">
+    						<label for="exampleInputEmail1"><%=Msg.getProperty("label.email")%></label>
+    						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="<%=Msg.getProperty("tip.email")%>">
+  						</div>
+  						<div class="form-group">
+    						<label for="exampleInputPassword1"><%=Msg.getProperty("label.password")%></label>
+    						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
+  						</div>
+  						<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
+  					</form>
         		</div>
         		<div class="modal-footer">
         		</div>

@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
-
-	<display-name>Gaam</display-name>
-
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-
-	<filter>
-		<filter-name>Filter</filter-name>
-		<filter-class>com.gaam.util.Filter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>Filter</filter-name>
-		<url-pattern>/modules/*</url-pattern>
-		<url-pattern>/main</url-pattern>
-		<url-pattern>/createArticle</url-pattern>
-		<url-pattern>/retrieveArticle</url-pattern>
-		<url-pattern>/updateArticle</url-pattern>
-		<url-pattern>/deleteArticle</url-pattern>
-		<url-pattern>/showArticle</url-pattern>
-	</filter-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Gaam</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>Filter</filter-name>
+    <filter-class>com.gaam.util.Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <url-pattern>/modules/*</url-pattern>
+    <url-pattern>/main</url-pattern>
+    <url-pattern>/createArticle</url-pattern>
+    <url-pattern>/retrieveArticle</url-pattern>
+    <url-pattern>/updateArticle</url-pattern>
+    <url-pattern>/deleteArticle</url-pattern>
+    <url-pattern>/showArticle</url-pattern>
+  </filter-mapping>
 </web-app>
