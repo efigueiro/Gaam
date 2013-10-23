@@ -117,13 +117,14 @@
         		</div>
         		<div class="modal-body">
         			<form action="/Gaam/login" method="post">
+        				${message}
           				<div class="form-group">
     						<label for="exampleInputEmail1"><%=Msg.getProperty("label.email")%></label>
-    						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="<%=Msg.getProperty("tip.email")%>">
+    						<input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="<%=Msg.getProperty("tip.email")%>">
   						</div>
   						<div class="form-group">
     						<label for="exampleInputPassword1"><%=Msg.getProperty("label.password")%></label>
-    						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
+    						<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
   						</div>
   						<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
   					</form>
