@@ -60,7 +60,7 @@
         			<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
 					<p>
           				<a class="btn btn-lg btn-primary" href="<%=request.getContextPath()%>/firstAppointment.jsp"><%=Msg.getProperty("button.appointment")%></a>
-          				<a class="btn btn-lg btn-primary" href="<%=request.getContextPath()%>/login.jsp"><%=Msg.getProperty("button.login")%></a>
+          				<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg"><%=Msg.getProperty("button.login")%></a>
         			</p>
         		</div>
       		</div>
