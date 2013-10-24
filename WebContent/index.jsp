@@ -34,16 +34,46 @@
     <div class="navbar navbar-default navbar-fixed-top">
     	<div class="container">
     		<div class="navbar-header">
-          		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            		<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-          		</button>
           		<a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("application.name")%></a>
         	</div>
         	<div class="navbar-collapse collapse">
           		<ul class="nav navbar-nav">
+          		
             		<li><a href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("menu.main")%></a></li>
+            		
+            		<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cliente <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#">Cadastrar Novo</a></li>
+          					<li><a href="#">Pesquisar Cliente</a></li>
+        				</ul>
+      				</li>
+      				
+      				<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Convênio <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#">Cadastrar Novo</a></li>
+          					<li><a href="#">Pesquisar Convênio</a></li>
+          					<li><a href="#">Relatório</a></li>
+        				</ul>
+      				</li>
+      				
+      				<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Médico <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#">Cadastrar Novo</a></li>
+          					<li><a href="#">Pesquisar Médico</a></li>
+        				</ul>
+      				</li>
+      				
+      				<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Agenda <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#">Configurar Agenda</a></li>
+          					<li><a href="#">Pesquisar Agenda</a></li>
+        				</ul>
+      				</li>
+      				
           		</ul>
         	</div>
       	</div>
