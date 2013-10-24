@@ -39,11 +39,11 @@
             		<span class="icon-bar"></span>
             		<span class="icon-bar"></span>
           		</button>
-          		<a class="navbar-brand" href="#"><%=Msg.getProperty("application.name")%></a>
+          		<a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("application.name")%></a>
         	</div>
         	<div class="navbar-collapse collapse">
           		<ul class="nav navbar-nav">
-            		<li><a href="#"><%=Msg.getProperty("menu.main")%></a></li>
+            		<li><a href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("menu.main")%></a></li>
           		</ul>
         	</div>
       	</div>
@@ -76,7 +76,9 @@
   					<div class="panel-body">
   						<form role="form" action="/Gaam/login" method="post">
     						<div class="form-group">
-    							${message}<br>
+    							<c:if test="${!empty message}">
+                                 	<div class="alert alert-info">${message}</div>
+                        		</c:if>
     							<label for="email"><%=Msg.getProperty("label.email")%></label>
     							<input name="email" type="email" class="form-control" id="email" placeholder="<%=Msg.getProperty("placeholder.email")%>">
   							</div>
