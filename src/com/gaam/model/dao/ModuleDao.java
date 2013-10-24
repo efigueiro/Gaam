@@ -7,18 +7,18 @@ import java.sql.ResultSet;
 
 import com.gaam.model.entity.User;
 
-public class LoginDao extends BaseDao {
+public class ModuleDao extends BaseDao {
 
-	private static LoginDao loginDao;
+	private static ModuleDao moduleDao;
 
-	private LoginDao() {
+	private ModuleDao() {
 	}
 
-	public static LoginDao getInstance() {
-		if (loginDao == null) {
-			loginDao = new LoginDao();
+	public static ModuleDao getInstance() {
+		if (moduleDao == null) {
+			moduleDao = new ModuleDao();
 		}
-		return loginDao;
+		return moduleDao;
 	}
 
 	public User authentication(User user) throws Exception {
@@ -34,8 +34,6 @@ public class LoginDao extends BaseDao {
 				u.setUserId(rs.getInt("user_id"));
 				u.setEmail(rs.getString("email"));
 				u.setPassword(rs.getString("password"));
-				u.setStatus(rs.getString("status"));
-				u.setRole(rs.getString("role"));
 			}
 			conn.close();
 		} catch (Exception e) {

@@ -60,7 +60,6 @@
         			<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
 					<p>
           				<a class="btn btn-lg btn-primary" href="<%=request.getContextPath()%>/firstAppointment.jsp"><%=Msg.getProperty("button.appointment")%></a>
-          				<a class="btn btn-lg btn-primary" href="<%=request.getContextPath()%>/login.jsp"><%=Msg.getProperty("button.login")%></a>
         			</p>
         		</div>
       		</div>
@@ -72,7 +71,26 @@
     <div class="container">
     	<div class="row">
     		<div class="col-md-4">
-				<div class="panel panel-success">
+  				<div class="panel panel-default">
+  					<div class="panel-heading"><%=Msg.getProperty("title.login")%></div>
+  					<div class="panel-body">
+  						<form role="form" action="/Gaam/login" method="post">
+    						<div class="form-group">
+    							${message}<br>
+    							<label for="email"><%=Msg.getProperty("label.email")%></label>
+    							<input name="email" type="email" class="form-control" id="email" placeholder="<%=Msg.getProperty("placeholder.email")%>">
+  							</div>
+  							<div class="form-group">
+    							<label for="password"><%=Msg.getProperty("label.password")%></label>
+    							<input name="password" type="password" class="form-control" id="password" placeholder="<%=Msg.getProperty("placeholder.password")%>">
+  							</div>
+  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.enter")%></button>
+						</form>
+					</div>
+  				</div>
+  			</div>
+    		<div class="col-md-4">
+				<div class="panel panel-default">
 					<div class="panel-heading">Especialidades</div>
 					<div class="panel-body">
 						<p>..diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accums</p>
@@ -80,17 +98,10 @@
 				</div>
 			</div>
   			<div class="col-md-4">
-  				<div class="panel panel-success">
+  				<div class="panel panel-default">
   					<div class="panel-heading">Convênios</div>
   					<div class="panel-body">
 						<p>..diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accums</p>
-					</div>
-  				</div>
-  			</div>
-  			<div class="col-md-4">
-  				<div class="panel panel-success">
-  					<div class="panel-heading">Notícias</div>
-  					<div class="panel-body">
 					</div>
   				</div>
   			</div>

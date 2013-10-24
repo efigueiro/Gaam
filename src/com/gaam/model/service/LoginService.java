@@ -1,5 +1,6 @@
 package com.gaam.model.service;
 
+import com.gaam.model.dao.LoginDao;
 import com.gaam.model.entity.User;
 
 public class LoginService {
@@ -18,7 +19,7 @@ public class LoginService {
 
 	public User authentication(User user) throws Exception {
 		User authenticated = new User();
-		authenticated = LoginService.getInstance().authentication(user);
+		authenticated = LoginDao.getInstance().authentication(user);
 		return authenticated;
 	}
 

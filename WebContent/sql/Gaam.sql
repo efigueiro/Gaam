@@ -6,29 +6,11 @@ create table users
   user_id serial not null,
   email varchar(300) not null,
   password varchar(150) not null,
+  role varchar(150) not null,
   status varchar(150) not null,
   unique(user_id, email),
   constraint user_pk primary key(user_id)
 );
-
-create table module
-(
-  module_id serial not null,
-  name varchar(300) not null,
-  observation varchar(300) not null,
-  unique(module_id, name),
-  constraint module_pk primary key(module_id)
-);
-
-create table users_module
-(
-  user_id integer not null,
-  module_id integer not null,
-  constraint user_fk foreign key(user_id) references users(user_id) on delete cascade,
-  constraint module_fk foreign key(module_id) references module(module_id) on delete cascade
-);
-
-
 
 
 
