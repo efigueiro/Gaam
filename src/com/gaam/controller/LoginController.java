@@ -34,7 +34,15 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		User authenticated = new User();
+        authenticated = (User) request.getSession().getAttribute("authenticated");
+        String action = request.getParameter("action");
+
+        if (authenticated == null || action.equals("logout")) {
+                request.getSession().invalidate();
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
 	}
 
 	/**
@@ -68,7 +76,23 @@ public class LoginController extends HttpServlet {
 			if(!StringUtils.isEmpty(authenticated.getEmail())) {
 				HttpSession session = request.getSession();
                 session.setAttribute("authenticated", authenticated);
-                request.getRequestDispatcher("modules/admin/main.jsp").forward(request, response);
+                
+                if(authenticated.getRole().equalsIgnoreCase("admin")){
+                	request.getRequestDispatcher("modules/admin/main.jsp").forward(request, response);
+                }
+                
+                if(authenticated.getRole().equalsIgnoreCase("medic")){
+                	request.getRequestDispatcher("modules/medic/main.jsp").forward(request, response);
+                }
+                
+                if(authenticated.getRole().equalsIgnoreCase("customer")){
+                	request.getRequestDispatcher("modules/customer/main.jsp").forward(request, response);
+                }
+                
+                if(authenticated.getRole().equalsIgnoreCase("employee")){
+                	request.getRequestDispatcher("modules/employee/main.jsp").forward(request, response);
+                }
+                
 			} else {
 				message = Msg.getProperty("message.userNotFound");
                 request.setAttribute("message", message);

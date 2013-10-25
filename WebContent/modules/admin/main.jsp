@@ -31,67 +31,8 @@
   
     <!-- Fixed top menu
     ================================================== -->
-    <div class="navbar navbar-default navbar-fixed-top">
-    	<div class="container">
-    		<div class="navbar-header">
-          		<a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("application.name")%></a>
-        	</div>
-        	<div class="navbar-collapse collapse">
-          		<ul class="nav navbar-nav">
-          		
-            		<li><a href="<%=request.getContextPath()%>/modules/admin/main.jsp"><%=Msg.getProperty("menu.main")%></a></li>
-            		
-            		<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.agenda")%> <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#"><%=Msg.getProperty("action.config")%></a></li>
-          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
-        				</ul>
-      				</li>
-            		
-            		<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.customer")%> <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
-          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
-        				</ul>
-      				</li>
-      				
-      				<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.insurance.company")%> <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
-          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
-          					<li><a href="#"><%=Msg.getProperty("action.report")%></a></li>
-        				</ul>
-      				</li>
-      				
-      				<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.medic")%> <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
-          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
-        				</ul>
-      				</li>
-      				
-          		</ul>
-          		
-          		<c:if test="${!empty authenticated.email}">
-          			<ul class="nav navbar-nav navbar-right">
-          				<li class="dropdown">
-        					<a href="#" class="dropdown-toggle" data-toggle="dropdown">${authenticated.email} <b class="caret"></b></a>
-        					<ul class="dropdown-menu">
-        						<li><a href="#">Editar Perfil</a></li>
-          						<li><a href="#">Sair</a></li>
-        					</ul>
-      					</li>
-          			</ul>
-				</c:if>
-          		
-        	</div>
-      	</div>
-    </div>
-
+	<jsp:include page="/include/menuAdmin.jsp" />
+	
 	<!-- Main container
     ================================================== -->
     <div class="container">
@@ -117,14 +58,9 @@
     	</div>
     </div> 
     
-    <!-- Bottom
+    <!-- Footer
     ================================================== -->
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-8"></div>
-    		<div class="col-md-4"><%=Msg.getProperty("application.rights")%></div>
-     	</div>
-     </div>
+    <jsp:include page="/include/footer.jsp" />
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
