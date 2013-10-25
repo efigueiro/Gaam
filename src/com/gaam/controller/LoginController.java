@@ -68,7 +68,7 @@ public class LoginController extends HttpServlet {
 			if(!StringUtils.isEmpty(authenticated.getEmail())) {
 				HttpSession session = request.getSession();
                 session.setAttribute("authenticated", authenticated);
-                request.getRequestDispatcher("modules/main.jsp").forward(request, response);
+                request.getRequestDispatcher("modules/admin/main.jsp").forward(request, response);
 			} else {
 				message = Msg.getProperty("message.userNotFound");
                 request.setAttribute("message", message);

@@ -40,39 +40,6 @@
           		<ul class="nav navbar-nav">
           		
             		<li><a href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("menu.main")%></a></li>
-            		
-            		<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cliente <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#">Cadastrar Novo</a></li>
-          					<li><a href="#">Pesquisar Cliente</a></li>
-        				</ul>
-      				</li>
-      				
-      				<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Convênio <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#">Cadastrar Novo</a></li>
-          					<li><a href="#">Pesquisar Convênio</a></li>
-          					<li><a href="#">Relatório</a></li>
-        				</ul>
-      				</li>
-      				
-      				<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Médico <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#">Cadastrar Novo</a></li>
-          					<li><a href="#">Pesquisar Médico</a></li>
-        				</ul>
-      				</li>
-      				
-      				<li class="dropdown">
-        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Agenda <b class="caret"></b></a>
-        				<ul class="dropdown-menu">
-          					<li><a href="#">Configurar Agenda</a></li>
-          					<li><a href="#">Pesquisar Agenda</a></li>
-        				</ul>
-      				</li>
       				
           		</ul>
         	</div>
@@ -148,35 +115,6 @@
     		<div class="col-md-4"><%=Msg.getProperty("application.rights")%></div>
      	</div>
      </div>
-
-    <!-- Modal for user identification
-    ================================================== -->
-  	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-  			<div class="modal-content">
-        		<div class="modal-header">
-          			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          			<h4 class="modal-title"><%=Msg.getProperty("title.identification")%></h4>
-        		</div>
-        		<div class="modal-body">
-        			<form action="/Gaam/login" method="post">
-        				${message}
-          				<div class="form-group">
-    						<label for="exampleInputEmail1"><%=Msg.getProperty("label.email")%></label>
-    						<input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="<%=Msg.getProperty("tip.email")%>">
-  						</div>
-  						<div class="form-group">
-    						<label for="exampleInputPassword1"><%=Msg.getProperty("label.password")%></label>
-    						<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
-  						</div>
-  						<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
-  					</form>
-        		</div>
-        		<div class="modal-footer">
-        		</div>
-      		</div>
-    	</div>
-  	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

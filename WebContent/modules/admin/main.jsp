@@ -34,12 +34,60 @@
     <div class="navbar navbar-default navbar-fixed-top">
     	<div class="container">
     		<div class="navbar-header">
-          		<a class="navbar-brand" href="#"><%=Msg.getProperty("application.name")%></a>
+          		<a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><%=Msg.getProperty("application.name")%></a>
         	</div>
         	<div class="navbar-collapse collapse">
           		<ul class="nav navbar-nav">
-            		<li><a href="#"><%=Msg.getProperty("menu.main")%></a></li>
+          		
+            		<li><a href="<%=request.getContextPath()%>/modules/admin/main.jsp"><%=Msg.getProperty("menu.main")%></a></li>
+            		
+            		<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.agenda")%> <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#"><%=Msg.getProperty("action.config")%></a></li>
+          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
+        				</ul>
+      				</li>
+            		
+            		<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.customer")%> <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
+          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
+        				</ul>
+      				</li>
+      				
+      				<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.insurance.company")%> <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
+          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
+          					<li><a href="#"><%=Msg.getProperty("action.report")%></a></li>
+        				</ul>
+      				</li>
+      				
+      				<li class="dropdown">
+        				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.medic")%> <b class="caret"></b></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
+          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
+        				</ul>
+      				</li>
+      				
           		</ul>
+          		
+          		<c:if test="${!empty authenticated.email}">
+          			<ul class="nav navbar-nav navbar-right">
+          				<li class="dropdown">
+        					<a href="#" class="dropdown-toggle" data-toggle="dropdown">${authenticated.email} <b class="caret"></b></a>
+        					<ul class="dropdown-menu">
+        						<li><a href="#">Editar Perfil</a></li>
+          						<li><a href="#">Sair</a></li>
+        					</ul>
+      					</li>
+          			</ul>
+				</c:if>
+          		
         	</div>
       	</div>
     </div>
@@ -47,39 +95,27 @@
 	<!-- Main container
     ================================================== -->
     <div class="container">
-    	<!-- Main component -->
-    	
-    </div> 
-    
-     <!-- Utility belt
-    ================================================== -->
-    <div class="container">
     	<div class="row">
     		<div class="col-md-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">Especialidades</div>
-					<div class="panel-body">
-						<p>..diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accums</p>
-					</div>
-				</div>
-			</div>
-  			<div class="col-md-4">
-  				<div class="panel panel-success">
-  					<div class="panel-heading">Convênios</div>
+    			<div class="panel panel-default">
+  					<div class="panel-heading"><%=Msg.getProperty("title.profile")%></div>
   					<div class="panel-body">
-						<p>..diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accums</p>
+  						<form role="form" action="/Gaam/login" method="post">
+						</form>
 					</div>
   				</div>
   			</div>
-  			<div class="col-md-4">
-  				<div class="panel panel-success">
-  					<div class="panel-heading">Notícias</div>
+  			<div class="col-md-8">
+    			<div class="panel panel-default">
+  					<div class="panel-heading"><%=Msg.getProperty("title.admin")%></div>
   					<div class="panel-body">
+  						<form role="form" action="/Gaam/login" method="post">
+						</form>
 					</div>
   				</div>
   			</div>
-		</div>
-	</div>
+    	</div>
+    </div> 
     
     <!-- Bottom
     ================================================== -->
@@ -89,32 +125,6 @@
     		<div class="col-md-4"><%=Msg.getProperty("application.rights")%></div>
      	</div>
      </div>
-
-    <!-- Modal for user identification
-    ================================================== -->
-  	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-  			<div class="modal-content">
-        		<div class="modal-header">
-          			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          			<h4 class="modal-title"><%=Msg.getProperty("title.identification")%></h4>
-        		</div>
-        		<div class="modal-body">
-          			<div class="form-group">
-    					<label for="exampleInputEmail1"><%=Msg.getProperty("label.email")%></label>
-    					<input type="email" class="form-control" id="exampleInputEmail1" placeholder="<%=Msg.getProperty("tip.email")%>">
-  					</div>
-  					<div class="form-group">
-    					<label for="exampleInputPassword1"><%=Msg.getProperty("label.password")%></label>
-    					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="<%=Msg.getProperty("tip.password")%>">
-  					</div>
-  					<button type="submit" class="btn btn-success"><%=Msg.getProperty("button.enter")%></button>
-        		</div>
-        		<div class="modal-footer">
-        		</div>
-      		</div>
-    	</div>
-  	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

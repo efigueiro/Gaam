@@ -3,7 +3,7 @@ package com.gaam.model.entity;
 import java.io.Serializable;
 import java.util.List;
 
-public class Medic implements Serializable {
+public class Employee implements Serializable {
 
 	/**
 	 * 
@@ -12,10 +12,12 @@ public class Medic implements Serializable {
 	private String name;
 	private String phone;
 	private String address;
-	private String crm;
-	private String speciality;
+	private String cpf;
+	private String rg;
+	private String country;
+	private String city;
 	private User user;
-	private List<InsuranceCompany> insuranceCompanyList;
+	private List<InsuranceCompany> InsuranceCompanyList;
 
 	public String getName() {
 		return name;
@@ -41,29 +43,45 @@ public class Medic implements Serializable {
 		this.address = address;
 	}
 
-	public String getCrm() {
-		return crm;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCrm(String crm) {
-		this.crm = crm;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public String getSpeciality() {
-		return speciality;
+	public String getRg() {
+		return rg;
 	}
 
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
+	public void setRg(String rg) {
+		this.rg = rg;
 	}
 
-	public List<InsuranceCompany> getInsuranceCOmpanyList() {
-		return insuranceCompanyList;
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public List<InsuranceCompany> getInsuranceCompanyList() {
+		return InsuranceCompanyList;
 	}
 
 	public void setInsuranceCompanyList(
 			List<InsuranceCompany> insuranceCompanyList) {
-		this.insuranceCompanyList = insuranceCompanyList;
+		InsuranceCompanyList = insuranceCompanyList;
 	}
 
 	public User getUser() {

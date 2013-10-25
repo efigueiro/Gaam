@@ -16,6 +16,7 @@ public class Customer implements Serializable {
 	private String rg;
 	private String country;
 	private String city;
+	private User user;
 	private List<InsuranceCompany> InsuranceCompanyList;
 
 	public String getName() {
@@ -81,6 +82,14 @@ public class Customer implements Serializable {
 	public void setInsuranceCompanyList(
 			List<InsuranceCompany> insuranceCompanyList) {
 		InsuranceCompanyList = insuranceCompanyList;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
