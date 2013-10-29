@@ -12,6 +12,7 @@ public class Customer implements Serializable {
 	private String name;
 	private String phone;
 	private String address;
+	private String birthDate;
 	private String cpf;
 	private String rg;
 	private String country;
@@ -90,6 +91,14 @@ public class Customer implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 }

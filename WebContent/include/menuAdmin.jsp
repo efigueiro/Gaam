@@ -20,7 +20,7 @@
             		<li class="dropdown">
         				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.customer")%> <b class="caret"></b></a>
         				<ul class="dropdown-menu">
-          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
+          					<li><a href="<%=request.getContextPath()%>/modules/admin/createCustomer.jsp"><%=Msg.getProperty("action.add")%></a></li>
           					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
         				</ul>
       				</li>
