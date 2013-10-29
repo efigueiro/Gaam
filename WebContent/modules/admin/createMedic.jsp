@@ -73,22 +73,14 @@
     							<input name="address" type="" class="form-control" id="address">
   							</div>
   							<div class="form-group">
-  								<label for="cpf"><%=Msg.getProperty("label.cpf")%></label>
-    							<input name="cpf" type="" class="form-control" id="cpf">
-  							</div>
-  							<div class="form-group">
-  								<label for="rg"><%=Msg.getProperty("label.rg")%></label>
-    							<input name="rg" type="" class="form-control" id="rg">
+  								<label for="crm"><%=Msg.getProperty("label.crm")%></label>
+    							<input name="crm" type="" class="form-control" id="crm">
   							</div>
   							<div class="form-group">
   								<label for="insuranceCompany"><%=Msg.getProperty("label.insuranceCompany")%></label>
     							<select class="form-control" name="insuranceCompany">
   									<option>Unimed</option>
 								</select>
-  							</div>
-  							<div class="form-group">
-  								<label for="insuranceCompanyIdentification"><%=Msg.getProperty("label.insuranceCompanyIdentification")%></label>
-    							<input name="insuranceCompanyIdentification" type="" class="form-control" id="insuranceCompanyIdentification">
   							</div>
   							<div class="form-group">
   								<label for="observation"><%=Msg.getProperty("label.observation")%></label>

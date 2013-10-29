@@ -28,7 +28,7 @@
       				<li class="dropdown">
         				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.insurance.company")%> <b class="caret"></b></a>
         				<ul class="dropdown-menu">
-          					<li><a href="#"><%=Msg.getProperty("action.add")%></a></li>
+          					<li><a href="<%=request.getContextPath()%>/modules/admin/createInsuranceCompany.jsp"><%=Msg.getProperty("action.add")%></a></li>
           					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
           					<li><a href="#"><%=Msg.getProperty("action.report")%></a></li>
         				</ul>

@@ -1,7 +1,6 @@
 package com.gaam.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Customer implements Serializable {
 
@@ -18,7 +17,8 @@ public class Customer implements Serializable {
 	private String country;
 	private String city;
 	private User user;
-	private List<InsuranceCompany> InsuranceCompanyList;
+	private String insuranceCompanyIdentification;
+	private InsuranceCompany insuranceCompany;
 
 	public String getName() {
 		return name;
@@ -76,15 +76,6 @@ public class Customer implements Serializable {
 		this.city = city;
 	}
 
-	public List<InsuranceCompany> getInsuranceCompanyList() {
-		return InsuranceCompanyList;
-	}
-
-	public void setInsuranceCompanyList(
-			List<InsuranceCompany> insuranceCompanyList) {
-		InsuranceCompanyList = insuranceCompanyList;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -99,6 +90,23 @@ public class Customer implements Serializable {
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public InsuranceCompany getInsuranceCompany() {
+		return insuranceCompany;
+	}
+
+	public void setInsuranceCompany(InsuranceCompany insuranceCompany) {
+		this.insuranceCompany = insuranceCompany;
+	}
+
+	public String getInsuranceCompanyIdentification() {
+		return insuranceCompanyIdentification;
+	}
+
+	public void setInsuranceCompanyIdentification(
+			String insuranceCompanyIdentification) {
+		this.insuranceCompanyIdentification = insuranceCompanyIdentification;
 	}
 
 }

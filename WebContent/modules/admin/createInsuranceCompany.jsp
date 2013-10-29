@@ -39,29 +39,14 @@
     	<div class="row">
     		<div class="col-md-12">
     			<div class="panel panel-default">
-  					<div class="panel-heading"><%=Msg.getProperty("title.createCustomer")%></div>
+  					<div class="panel-heading"><%=Msg.getProperty("title.createInsuranceCompany")%></div>
   					<div class="panel-body">
   						<form role="form" action="/Gaam/login" method="post">
     						<div class="form-group">
     							<c:if test="${!empty message}">
                                  	<div class="alert alert-info">${message}</div>
                         		</c:if>
-    							<label for="email"><%=Msg.getProperty("label.email")%></label>
-    							<input name="email" type="email" class="form-control" id="email">
-  							</div>
-  							<div class="form-group">
-  								<label for="password"><%=Msg.getProperty("label.password")%></label>
-    							<input name="password" type="" class="form-control" id="password">
-  							</div>
-  							<div class="form-group">
-  								<label for="status"><%=Msg.getProperty("label.status")%></label>
-    							<select class="form-control" name="status">
-  									<option>Ativo</option>
-  									<option>Inativo</option>
-								</select>
-  							</div>
-  							<div class="form-group">
-  								<label for="name"><%=Msg.getProperty("label.name")%></label>
+    							<label for="name"><%=Msg.getProperty("label.name")%></label>
     							<input name="name" type="" class="form-control" id="name">
   							</div>
   							<div class="form-group">
@@ -71,24 +56,6 @@
   							<div class="form-group">
   								<label for="address"><%=Msg.getProperty("label.address")%></label>
     							<input name="address" type="" class="form-control" id="address">
-  							</div>
-  							<div class="form-group">
-  								<label for="cpf"><%=Msg.getProperty("label.cpf")%></label>
-    							<input name="cpf" type="" class="form-control" id="cpf">
-  							</div>
-  							<div class="form-group">
-  								<label for="rg"><%=Msg.getProperty("label.rg")%></label>
-    							<input name="rg" type="" class="form-control" id="rg">
-  							</div>
-  							<div class="form-group">
-  								<label for="insuranceCompany"><%=Msg.getProperty("label.insuranceCompany")%></label>
-    							<select class="form-control" name="insuranceCompany">
-  									<option>Unimed</option>
-								</select>
-  							</div>
-  							<div class="form-group">
-  								<label for="insuranceCompanyIdentification"><%=Msg.getProperty("label.insuranceCompanyIdentification")%></label>
-    							<input name="insuranceCompanyIdentification" type="" class="form-control" id="insuranceCompanyIdentification">
   							</div>
   							<div class="form-group">
   								<label for="observation"><%=Msg.getProperty("label.observation")%></label>
