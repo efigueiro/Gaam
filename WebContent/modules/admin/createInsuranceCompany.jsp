@@ -41,7 +41,7 @@
     			<div class="panel panel-default">
   					<div class="panel-heading"><%=Msg.getProperty("title.createInsuranceCompany")%></div>
   					<div class="panel-body">
-  						<form role="form" action="/Gaam/login" method="post">
+  						<form role="form" action="/Gaam/createInsuranceCompany" method="post">
     						<div class="form-group">
     							<c:if test="${!empty message}">
                                  	<div class="alert alert-info">${message}</div>
@@ -62,7 +62,7 @@
     							<input name="observation" type="" class="form-control" id="observation">
   							</div>
   							
-  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.enter")%></button>
+  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.submit")%></button>
 						</form>
 					</div>
   				</div>

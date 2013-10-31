@@ -9,6 +9,7 @@ public class InsuranceCompany implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int insuranceCompanyId;
 	private String name;
 	private String phone;
 	private String address;
@@ -62,6 +63,14 @@ public class InsuranceCompany implements Serializable {
 
 	public void setMedicList(List<Medic> medicList) {
 		this.medicList = medicList;
+	}
+
+	public int getInsuranceCompanyId() {
+		return insuranceCompanyId;
+	}
+
+	public void setInsuranceCompanyId(int insuranceCompanyId) {
+		this.insuranceCompanyId = insuranceCompanyId;
 	}
 
 }

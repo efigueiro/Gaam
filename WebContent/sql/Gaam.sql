@@ -6,12 +6,23 @@ create table users
   user_id serial not null,
   email varchar(300) not null,
   password varchar(150) not null,
-  role varchar(150) not null,
-  status varchar(150) not null,
+  role varchar(50) not null,
+  status varchar(20) not null,
   unique(user_id, email),
   constraint user_pk primary key(user_id)
 );
 
+
+create table insurance_company 
+(
+  insurance_company_id serial not null,
+  name varchar(300) not null,
+  phone varchar(150) not null;
+  address varchar(300) not null;
+  observation varchar(300) not null;
+  unique(insurance_company_id, name),
+  constraint insurance_company_pk primary key(insurance_company_id)
+); 
 
 
 -- Just for learn

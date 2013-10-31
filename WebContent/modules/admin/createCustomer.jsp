@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.gaam.util.Msg"%>
+<%@ page import="com.gaam.model.entity.InsuranceCompany"%>
+<%@ page import="com.gaam.model.service.InsuranceCompanyService"%>
+<%@ page import="java.util.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +29,15 @@
     <![endif]-->
     
   </head>
+  
+  <!-- scripts java -->
+  	<%
+  		// Retrieve all categories for category combo box.
+  		List<InsuranceCompany> insuranceCompanyList = new ArrayList<InsuranceCompany>();
+        insuranceCompanyList = InsuranceCompanyService.getInstance().retrieveAll();
+        request.setAttribute("insuranceCompanyList", insuranceCompanyList);
+	%>
+  <!-- end scripts -->
 
   <body>
   
@@ -83,7 +95,9 @@
   							<div class="form-group">
   								<label for="insuranceCompany"><%=Msg.getProperty("label.insuranceCompany")%></label>
     							<select class="form-control" name="insuranceCompany">
-  									<option>Unimed</option>
+    								<c:forEach var="insuranceCompany" items="${insuranceCompanyList}">
+                                    	<option value="${insuranceCompany.insuranceCompanyId}">${insuranceCompany.name}</option>
+									</c:forEach>
 								</select>
   							</div>
   							<div class="form-group">
