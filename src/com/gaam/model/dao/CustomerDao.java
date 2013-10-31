@@ -3,8 +3,13 @@ package com.gaam.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.gaam.model.entity.Customer;
+import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.User;
+import com.gaam.util.Msg;
 
 public class CustomerDao extends BaseDao {
 
@@ -41,5 +46,73 @@ public class CustomerDao extends BaseDao {
 
 		}
 		return user;
+	}
+
+	// arrumar...
+	public String create(Customer customer) throws Exception {
+		String message = "";
+		Connection conn = this.getConnection();
+		String sql = "insert into customer(email, password, status, role)"
+				+ "values(?,?,?,?);";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			/*
+			 * pstm.setString(1, user.getEmail()); pstm.setString(2,
+			 * user.getPassword()); pstm.setString(3, user.getStatus());
+			 * pstm.setString(4, user.getRole());
+			 */
+			pstm.execute();
+			pstm.close();
+			conn.close();
+
+			message = Msg.getProperty("message.success");
+		} catch (Exception e) {
+			message = e + " " + Msg.getProperty("message.error");
+			conn.close();
+		}
+		return message;
+	}
+
+	// search for partial or full name
+	public List<Customer> retrieveByFilter(String keyword) throws Exception {
+		Connection conn = this.getConnection();
+		List<Customer> customerList = new ArrayList<Customer>();
+		String sql = "select * from customer where name ilike ? order by name";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, "%" + keyword + "%");
+			ResultSet rs = pstm.executeQuery();
+			while (rs.next()) {
+				Customer customer= new Customer();
+				InsuranceCompany insuranceCompany = new InsuranceCompany();
+
+				// Load customer
+				customer.setAddress(rs.getString("address"));
+				customer
+				article.setArticleId(rs.getInt("article_id"));
+				article.setCreationDate(rs.getString("creation_date"));
+				article.setTitle(rs.getString("title"));
+
+				// Load category
+				category.setCategoryId(rs.getInt("category_id"));
+				category = CategoryController.getInstance()
+						.retrieveByCategoryId(category.getCategoryId());
+				article.setCategory(category);
+
+				// Load user/author
+				user.setUserId(rs.getInt("user_id"));
+				article.setUser(user);
+
+				// Add article to articleList
+				articleList.add(article);
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			conn.close();
+		}
+		return articleList;
 	}
 }
