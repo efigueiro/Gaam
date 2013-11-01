@@ -88,23 +88,16 @@ public class CustomerDao extends BaseDao {
 
 				// Load customer
 				customer.setAddress(rs.getString("address"));
-				customer
-				article.setArticleId(rs.getInt("article_id"));
-				article.setCreationDate(rs.getString("creation_date"));
-				article.setTitle(rs.getString("title"));
+				customer.setBirthDate(rs.getString("birth_date"));
+				customer.setCpf(rs.getString("cpf"));
+				customer.setInsuranceCompanyIdentification(rs.getString("insurance_company_identification"));
+				customer.getInsuranceCompany().setInsuranceCompanyId(rs.getInt("insurance_company_id"));
+				customer.setName(rs.getString("name"));
+				customer.setPhone(rs.getString("phone"));
+				customer.setRg(rs.getString("rg"));
 
-				// Load category
-				category.setCategoryId(rs.getInt("category_id"));
-				category = CategoryController.getInstance()
-						.retrieveByCategoryId(category.getCategoryId());
-				article.setCategory(category);
-
-				// Load user/author
-				user.setUserId(rs.getInt("user_id"));
-				article.setUser(user);
-
-				// Add article to articleList
-				articleList.add(article);
+				// Add customer to customerList
+				customerList.add(customer);
 			}
 			rs.close();
 			pstm.close();
@@ -113,6 +106,6 @@ public class CustomerDao extends BaseDao {
 			System.out.println(e.getMessage());
 			conn.close();
 		}
-		return articleList;
+		return customerList;
 	}
 }

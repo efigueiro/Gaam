@@ -53,7 +53,7 @@
     			<div class="panel panel-default">
   					<div class="panel-heading"><%=Msg.getProperty("title.createCustomer")%></div>
   					<div class="panel-body">
-  						<form role="form" action="/Gaam/login" method="post">
+  						<form role="form" action="/Gaam/createCustomer" method="post">
     						<div class="form-group">
     							<c:if test="${!empty message}">
                                  	<div class="alert alert-info">${message}</div>
