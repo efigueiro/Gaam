@@ -33,54 +33,66 @@
     ================================================== -->
 	<jsp:include page="/include/menuAdmin.jsp" />
 	
-	<!-- Main container
+	<!-- Search container
     ================================================== -->
     <div class="container">
     	<div class="row">
     		<div class="col-md-12">
     			<div class="panel panel-default">
-  					<div class="panel-heading"><%=Msg.getProperty("title.createMedic")%></div>
+  					<div class="panel-heading"><%=Msg.getProperty("title.searchInsuranceCompany")%></div>
   					<div class="panel-body">
-  						<form role="form" action="/Gaam/createMedic" method="post">
+  						<form role="form" action="/Gaam/searchInsuranceCompany" method="post">
     						<div class="form-group">
     							<c:if test="${!empty message}">
                                  	<div class="alert alert-info">${message}</div>
                         		</c:if>
-    							<label for="email"><%=Msg.getProperty("label.email")%></label>
-    							<input name="email" type="email" class="form-control" id="email">
-  							</div>
-  							<div class="form-group">
-  								<label for="password"><%=Msg.getProperty("label.password")%></label>
-    							<input name="password" type="" class="form-control" id="password">
-  							</div>
-  							<div class="form-group">
-  								<label for="name"><%=Msg.getProperty("label.name")%></label>
+    							<label for="name"><%=Msg.getProperty("label.insuranceCompany")%></label>
     							<input name="name" type="" class="form-control" id="name">
   							</div>
-  							<div class="form-group">
-  								<label for="phone"><%=Msg.getProperty("label.phone")%></label>
-    							<input name="phone" type="" class="form-control" id="phone">
-  							</div>
-  							<div class="form-group">
-  								<label for="address"><%=Msg.getProperty("label.address")%></label>
-    							<input name="address" type="" class="form-control" id="address">
-  							</div>
-  							<div class="form-group">
-  								<label for="crm"><%=Msg.getProperty("label.crm")%></label>
-    							<input name="crm" type="" class="form-control" id="crm">
-  							</div>
-  							<div class="form-group">
-  								<label for="observation"><%=Msg.getProperty("label.observation")%></label>
-    							<input name="observation" type="" class="form-control" id="observation">
-  							</div>
   							
-  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.submit")%></button>
+  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.search")%></button>
 						</form>
 					</div>
   				</div>
   			</div>
     	</div>
     </div> 
+    
+    <!-- Data container
+    ================================================== -->
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<div class="panel panel-default">
+  					<div class="panel-heading"><%=Msg.getProperty("title.searchInsuranceCompany")%></div>
+  					<div class="panel-body">
+  						<table class="table table-hover">
+  							<tr>
+  								<td>Name</td>
+  								<td>Phone</td>
+  								<td>Address</td>
+  								<td>Observation</td>
+							</tr>
+							
+							<tr>
+  								<td>Name</td>
+  								<td>Phone</td>
+  								<td>Address</td>
+  								<td>Observation</td>
+							</tr>
+							
+							<tr>
+  								<td>Name</td>
+  								<td>Phone</td>
+  								<td>Address</td>
+  								<td>Observation</td>
+							</tr>
+  						</table>
+					</div>
+  				</div>
+  			</div>
+    	</div>
+    </div>
     
     <!-- Footer
     ================================================== -->

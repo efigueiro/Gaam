@@ -66,13 +66,6 @@
     							<input name="password" type="" class="form-control" id="password">
   							</div>
   							<div class="form-group">
-  								<label for="status"><%=Msg.getProperty("label.status")%></label>
-    							<select class="form-control" name="status">
-  									<option>Ativo</option>
-  									<option>Inativo</option>
-								</select>
-  							</div>
-  							<div class="form-group">
   								<label for="name"><%=Msg.getProperty("label.name")%></label>
     							<input name="name" type="" class="form-control" id="name">
   							</div>
@@ -109,7 +102,7 @@
     							<input name="observation" type="" class="form-control" id="observation">
   							</div>
   							
-  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.enter")%></button>
+  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.submit")%></button>
 						</form>
 					</div>
   				</div>

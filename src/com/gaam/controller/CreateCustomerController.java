@@ -47,8 +47,6 @@ public class CreateCustomerController extends HttpServlet {
 		String insuranceCompany = (String) request.getParameter("insuranceCompany");
 		String insuranceCompanyIdentification = (String) request.getParameter("insuranceCompanyIdentification");
 		String observation = (String) request.getParameter("observation");
-		
-		
 	}
 
 }

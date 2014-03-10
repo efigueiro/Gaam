@@ -46,6 +46,31 @@ public class InsuranceCompanyDao extends BaseDao {
 		}
 		return user;
 	}
+	
+	public InsuranceCompany retrieveName(String name) throws Exception {
+		Connection conn = this.getConnection();
+		InsuranceCompany insuranceCompany = new InsuranceCompany();
+		String sql = "select * from insurance_company where name ilike ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, name);
+			ResultSet rs = pstm.executeQuery();
+			if (rs.next()) {
+				insuranceCompany.setAddress(rs.getString("address"));
+				insuranceCompany.setInsuranceCompanyId(rs.getInt("insurance_company_id"));
+				insuranceCompany.setName(rs.getString("name"));
+				insuranceCompany.setObservation(rs.getString("observation"));
+				insuranceCompany.setPhone(rs.getString("phone"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+		}
+		return insuranceCompany;
+	}
 
 	public String create(InsuranceCompany insuranceCompany) throws Exception {
 		String message = "";
@@ -85,6 +110,34 @@ public class InsuranceCompanyDao extends BaseDao {
 				insuranceCompany.setPhone(rs.getString("phone"));
 				insuranceCompany.setObservation(rs.getString("observation"));
 				
+				insuranceCompanyList.add(insuranceCompany);
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			conn.close();
+		}
+		return insuranceCompanyList;
+	}
+	
+	public List<InsuranceCompany> retrieveByFilter(String keyword) throws Exception {
+		Connection conn = this.getConnection();
+		List<InsuranceCompany> insuranceCompanyList = new ArrayList<InsuranceCompany>();
+		String sql = "select * from insurance_company where name ilike ? order by name";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, "%" + keyword + "%");
+			ResultSet rs = pstm.executeQuery();
+			while (rs.next()) {
+				InsuranceCompany insuranceCompany = new InsuranceCompany();
+
+				insuranceCompany.setAddress(rs.getString("address"));
+				insuranceCompany.setInsuranceCompanyId(rs.getInt("insurance_company_id"));
+				insuranceCompany.setName(rs.getString("name"));
+				insuranceCompany.setObservation(rs.getString("observation"));
+				insuranceCompany.setPhone(rs.getString("phone"));
 				insuranceCompanyList.add(insuranceCompany);
 			}
 			rs.close();
