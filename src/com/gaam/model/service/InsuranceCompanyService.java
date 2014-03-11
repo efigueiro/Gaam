@@ -34,5 +34,9 @@ public class InsuranceCompanyService {
 	public List<InsuranceCompany> retrieveAll() throws Exception {
 		return InsuranceCompanyDao.getInstance().retrieveAll();
 	}
+	
+	public List<InsuranceCompany> retrieveByFilter(String keyword) throws Exception {
+		return InsuranceCompanyDao.getInstance().retrieveByFilter(keyword);
+	}
 
 }
