@@ -82,8 +82,8 @@
 									<td>${insuranceCompany.phone}</td>
 									<td>${insuranceCompany.address}</td>
 									<td>
-										<a href="/EasyDays/updateArticle?articleId=${insuranceCompany.insuranceCompanyId}" title="<%=Msg.getProperty("tip.edit")%>" ><img src="<%=request.getContextPath()%>/img/Notepad.png" border="0"></a>
-										<a data-toggle="modal" href="#dialog" title="<%=Msg.getProperty("tip.delete")%>" style="margin-left: 10px;" onclick="document.getElementById('selectedValue').value ='${insuranceCompany.insuranceCompanyId}';" ><img src="<%=request.getContextPath()%>/img/Cross.png" border="0"></a>
+										<a href="/Gaam/updateInsuranceCompany?insuranceCompanyId=${insuranceCompany.insuranceCompanyId}" title="<%=Msg.getProperty("tip.edit")%>" ><img src="<%=request.getContextPath()%>/img/Notepad.png" border="0"></a>
+										<a data-toggle="modal" href="#dialog" title="<%=Msg.getProperty("tip.delete")%>" style="margin-left: 10px;" onclick="document.getElementById('selectedValueId').value ='${insuranceCompany.insuranceCompanyId}';document.getElementById('selectedValueName').value ='${insuranceCompany.name}'" ><img src="<%=request.getContextPath()%>/img/Cross.png" border="0"></a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -105,12 +105,14 @@
           			<h4 class="modal-title"><%=Msg.getProperty("message.delete.confirmation")%></h4>
         		</div>
         		<div class="modal-body">
-        			<form action="/Gaam/login" method="post">
+        			<form action="/Gaam/deleteInsuranceCompany" method="post">
         				${message}
           				<div class="form-group">
-    						<input name="selectedValue" type="" class="form-control" id="selectedValue">
+    						<input name="selectedValueId" type="hidden" class="form-control" id="selectedValueId">
+    						<input readonly="readonly" name="selectedValueName" type="" class="form-control" id="selectedValueName">
   						</div>
   						<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.yes")%></button>
+  						<button type="submit" class="btn btn-default" data-dismiss="modal" ><%=Msg.getProperty("button.no")%></button>
   					</form>
         		</div>
         		<div class="modal-footer">

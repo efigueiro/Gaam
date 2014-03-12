@@ -1,8 +1,6 @@
 package com.gaam.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.service.InsuranceCompanyService;
 
 /**
- * Servlet implementation class RetrieveInsuranceCompany
+ * Servlet implementation class DeleteInsuranceCompany
  */
-@WebServlet("/retrieveInsuranceCompany")
-public class RetrieveInsuranceCompanyController extends HttpServlet {
+@WebServlet("/deleteInsuranceCompany")
+public class DeleteInsuranceCompanyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RetrieveInsuranceCompanyController() {
+	public DeleteInsuranceCompanyController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,18 +42,17 @@ public class RetrieveInsuranceCompanyController extends HttpServlet {
 
 		String message = "";
 
-		String keyword = (String) request.getParameter("keyword");
-		List<InsuranceCompany> insuranceCompanyList = new ArrayList<InsuranceCompany>();
+		String strInsuranceCompanyId = (String) request.getParameter("selectedValueId");
+		int insuranceCompanyId  = Integer.parseInt(strInsuranceCompanyId);
 
 		try {
-			insuranceCompanyList = InsuranceCompanyService.getInstance().retrieveByFilter(keyword);
+			message = InsuranceCompanyService.getInstance().deleteById(insuranceCompanyId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		request.setAttribute("message", message);
-		request.setAttribute("insuranceCompanyList", insuranceCompanyList);
 		request.getRequestDispatcher("modules/admin/retrieveInsuranceCompany.jsp").forward(request, response);
 	}
 }

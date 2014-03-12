@@ -7,13 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.service.InsuranceCompanyService;
-import com.gaam.model.service.LoginService;
 import com.gaam.util.Msg;
 
 /**

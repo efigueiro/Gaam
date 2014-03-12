@@ -24,27 +24,30 @@ public class InsuranceCompanyDao extends BaseDao {
 		return insuranceCompanyDao;
 	}
 
-	public User retrieveById(int userId) throws Exception {
+	public InsuranceCompany retrieveById(int insuranceCompanyId) throws Exception {
 		Connection conn = this.getConnection();
-		User user = new User();
-		String sql = "select * from users where user_id = ?";
+		InsuranceCompany insuranceCompany = new InsuranceCompany();
+		String sql = "select * from insurance_company where insurance_company_id = ?";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, userId);
+			pstm.setInt(1, insuranceCompanyId);
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
-				user.setEmail(rs.getString("email"));
-				user.setPassword(rs.getString("password"));
-				user.setUserId(rs.getInt("user_id"));
+				insuranceCompany.setAddress(rs.getString("address"));
+				insuranceCompany.setInsuranceCompanyId(rs.getInt("insurance_company_id"));
+				insuranceCompany.setName(rs.getString("name"));
+				insuranceCompany.setObservation(rs.getString("observation"));
+				insuranceCompany.setPhone(rs.getString("phone"));
 			}
 			rs.close();
 			pstm.close();
 			conn.close();
-
+			
 		} catch (Exception e) {
-
+			
 		}
-		return user;
+		
+		return insuranceCompany;
 	}
 	
 	public InsuranceCompany retrieveName(String name) throws Exception {
@@ -148,6 +151,20 @@ public class InsuranceCompanyDao extends BaseDao {
 			conn.close();
 		}
 		return insuranceCompanyList;
+	}
+	
+	public String deleteById(int insuranceCompanyId) throws Exception {
+		Connection conn = this.getConnection();
+		String sql = "delete from insurance_company where insurance_company_id = ?;";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, insuranceCompanyId);
+			pstm.execute();
+			return Msg.getProperty("message.success");
+		} catch (Exception e) {
+			conn.close();
+		}
+		return null;
 	}
 
 }
