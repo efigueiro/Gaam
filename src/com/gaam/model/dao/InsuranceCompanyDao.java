@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gaam.model.entity.InsuranceCompany;
-import com.gaam.model.entity.User;
 import com.gaam.util.Msg;
 
 public class InsuranceCompanyDao extends BaseDao {
@@ -165,6 +164,30 @@ public class InsuranceCompanyDao extends BaseDao {
 			conn.close();
 		}
 		return null;
+	}
+	
+	public String update(InsuranceCompany insuranceCompany) throws Exception {
+		String message = "";
+		Connection conn = this.getConnection();
+		String sql = "update insurance_company set insurance_company_id=?, name=?, phone=?, address=?, observation=?" + "where insurance_company_id=?;";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, insuranceCompany.getInsuranceCompanyId());
+			pstm.setString(2, insuranceCompany.getName());
+			pstm.setString(3, insuranceCompany.getPhone());
+			pstm.setString(4, insuranceCompany.getAddress());
+			pstm.setString(5, insuranceCompany.getObservation());
+			pstm.setInt(6, insuranceCompany.getInsuranceCompanyId());
+			pstm.execute();
+			pstm.close();
+			conn.close();
+
+			message = Msg.getProperty("message.success");
+		} catch (Exception e) {
+			message = e + " " + Msg.getProperty("message.error");
+			conn.close();
+		}
+		return message;
 	}
 
 }

@@ -36,6 +36,10 @@
 	<!-- Main container
     ================================================== -->
     <div class="container">
+    	<a href="/Gaam/modules/admin/retrieveInsuranceCompany.jsp" title="<%=Msg.getProperty("button.back")%>" ><img src="<%=request.getContextPath()%>/img/Arrow.png" border="0"></a><br><br>
+    </div>
+    
+    <div class="container">
     	<div class="row">
     		<div class="col-md-12">
     			<div class="panel panel-default">
@@ -46,7 +50,7 @@
     							<c:if test="${!empty message}">
                                  	<div class="alert alert-info">${message}</div>
                         		</c:if>
-                        		<input name="insuranceCompanyId" type="" class="form-control" id="insuranceCompanyId" value="${selectedInsuranceCompany.insuranceCompanyId}">
+                        		<input name="insuranceCompanyId" type="hidden" class="form-control" id="insuranceCompanyId" value="${selectedInsuranceCompany.insuranceCompanyId}">
                         		
     							<label for="name"><%=Msg.getProperty("label.name")%></label>
     							<input name="name" type="" class="form-control" id="name" value="${selectedInsuranceCompany.name}">
@@ -64,7 +68,7 @@
     							<input name="observation" type="" class="form-control" id="observation" value="${selectedInsuranceCompany.observation}">
   							</div>
   							
-  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.submit")%></button>
+  							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.save")%></button>
 						</form>
 					</div>
   				</div>

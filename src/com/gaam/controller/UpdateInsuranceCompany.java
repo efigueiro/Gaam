@@ -53,7 +53,50 @@ public class UpdateInsuranceCompany extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		String message = "";
+		
+		InsuranceCompany insuranceCompany = new InsuranceCompany();
+		
+		String strInsuranceCompanyId = (String) request.getParameter("insuranceCompanyId");
+		int insuranceCompanyId = Integer.parseInt(strInsuranceCompanyId);
+		String name = (String) request.getParameter("name");
+		String phone = (String) request.getParameter("phone");
+		String address = (String) request.getParameter("address");
+		String observation = (String) request.getParameter("observation");
+		
+		//load old insuranceCompany
+		try {
+			insuranceCompany = InsuranceCompanyService.getInstance().retrieveById(insuranceCompanyId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			message = e.getMessage();
+		}
+
+		//set new values to ensuranceCompany
+		insuranceCompany.setAddress(address);
+		insuranceCompany.setName(name);
+		insuranceCompany.setObservation(observation);
+		insuranceCompany.setPhone(phone);
+		
+		//send the object to update
+		try {
+			message = InsuranceCompanyService.getInstance().update(insuranceCompany);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			message = e.getMessage();
+		}
+		
+		try {
+			insuranceCompany = InsuranceCompanyService.getInstance().retrieveById(insuranceCompanyId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			message = e.getMessage();
+		}
+		
+		request.setAttribute("message", message);
+		request.setAttribute("selectedInsuranceCompany", insuranceCompany);
+		request.getRequestDispatcher("modules/admin/updateInsuranceCompany.jsp").forward(request, response);
 	}
 
 }

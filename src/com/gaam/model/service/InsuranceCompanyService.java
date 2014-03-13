@@ -47,4 +47,7 @@ public class InsuranceCompanyService {
 		return InsuranceCompanyDao.getInstance().retrieveById(insuranceCompanyId);
 	}
 
+	public String update(InsuranceCompany insuranceCompany) throws Exception {
+		return InsuranceCompanyDao.getInstance().update(insuranceCompany);
+	}
 }
