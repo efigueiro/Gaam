@@ -57,6 +57,7 @@ public class CreateCustomerController extends HttpServlet {
 		String rg = (String) request.getParameter("rg");
 		String insuranceCompanyId = (String) request.getParameter("insuranceCompany");
 		String insuranceCompanyIdentification = (String) request.getParameter("insuranceCompanyIdentification");
+		String roleId = (String) request.getParameter("roleId")
 		String observation = (String) request.getParameter("observation");
 		
 		// Fields validation
