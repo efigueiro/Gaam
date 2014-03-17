@@ -19,6 +19,7 @@ public class Customer implements Serializable {
 	private User user;
 	private String insuranceCompanyIdentification;
 	private InsuranceCompany insuranceCompany;
+	private String observation;
 
 	public String getName() {
 		return name;
@@ -109,4 +110,11 @@ public class Customer implements Serializable {
 		this.insuranceCompanyIdentification = insuranceCompanyIdentification;
 	}
 
+	public String getObservation() {
+		return observation;
+	}
+
+	public void setObservation(String observation) {
+		this.observation = observation;
+	}
 }

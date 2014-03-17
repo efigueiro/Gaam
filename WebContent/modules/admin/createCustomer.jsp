@@ -2,7 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.gaam.util.Msg"%>
 <%@ page import="com.gaam.model.entity.InsuranceCompany"%>
+<%@ page import="com.gaam.model.entity.Role"%>
 <%@ page import="com.gaam.model.service.InsuranceCompanyService"%>
+<%@ page import="com.gaam.model.service.RoleService"%>
 <%@ page import="java.util.*"%>
 
 <!DOCTYPE html>
@@ -32,10 +34,15 @@
   
   <!-- scripts java -->
   	<%
-  		// Retrieve all categories for category combo box.
+  		// Retrieve all insurance companies for insurance company combo box.
   		List<InsuranceCompany> insuranceCompanyList = new ArrayList<InsuranceCompany>();
         insuranceCompanyList = InsuranceCompanyService.getInstance().retrieveAll();
         request.setAttribute("insuranceCompanyList", insuranceCompanyList);
+        
+     	// Retrieve all roles for combo box.
+  		List<Role> roleList = new ArrayList<Role>();
+        roleList = RoleService.getInstance().retrieveAll();
+        request.setAttribute("roleList", roleList);
 	%>
   <!-- end scripts -->
 
@@ -59,31 +66,31 @@
                                  	<div class="alert alert-info">${message}</div>
                         		</c:if>
     							<label for="email"><%=Msg.getProperty("label.email")%></label>
-    							<input name="email" type="email" class="form-control" id="email">
+    							<input name="email" type="email" class="form-control" id="email" value="${email}">
   							</div>
   							<div class="form-group">
   								<label for="password"><%=Msg.getProperty("label.password")%></label>
-    							<input name="password" type="" class="form-control" id="password">
+    							<input name="password" type="" class="form-control" id="password" value="${password}">
   							</div>
   							<div class="form-group">
   								<label for="name"><%=Msg.getProperty("label.name")%></label>
-    							<input name="name" type="" class="form-control" id="name">
+    							<input name="name" type="" class="form-control" id="name" value="${customer.name}">
   							</div>
   							<div class="form-group">
   								<label for="phone"><%=Msg.getProperty("label.phone")%></label>
-    							<input name="phone" type="" class="form-control" id="phone">
+    							<input name="phone" type="" class="form-control" id="phone" value="${customer.phone}">
   							</div>
   							<div class="form-group">
   								<label for="address"><%=Msg.getProperty("label.address")%></label>
-    							<input name="address" type="" class="form-control" id="address">
+    							<input name="address" type="" class="form-control" id="address" value="${customer.address}">
   							</div>
   							<div class="form-group">
   								<label for="cpf"><%=Msg.getProperty("label.cpf")%></label>
-    							<input name="cpf" type="" class="form-control" id="cpf">
+    							<input name="cpf" type="" class="form-control" id="cpf" value="${customer.cpf}">
   							</div>
   							<div class="form-group">
   								<label for="rg"><%=Msg.getProperty("label.rg")%></label>
-    							<input name="rg" type="" class="form-control" id="rg">
+    							<input name="rg" type="" class="form-control" id="rg" value="${customer.rg}">
   							</div>
   							<div class="form-group">
   								<label for="insuranceCompany"><%=Msg.getProperty("label.insuranceCompany")%></label>
@@ -95,11 +102,19 @@
   							</div>
   							<div class="form-group">
   								<label for="insuranceCompanyIdentification"><%=Msg.getProperty("label.insuranceCompanyIdentification")%></label>
-    							<input name="insuranceCompanyIdentification" type="" class="form-control" id="insuranceCompanyIdentification">
+    							<input name="insuranceCompanyIdentification" type="" class="form-control" id="insuranceCompanyIdentification" value="${customer.insuranceCompanyIdentification}">
+  							</div>
+  							<div class="form-group">
+  								<label for="role"><%=Msg.getProperty("label.role")%></label>
+    							<select class="form-control" name="role">
+    								<c:forEach var="role" items="${roleList}">
+                                    	<option value="${role.roleId}">${role.name}</option>
+									</c:forEach>
+								</select>
   							</div>
   							<div class="form-group">
   								<label for="observation"><%=Msg.getProperty("label.observation")%></label>
-    							<input name="observation" type="" class="form-control" id="observation">
+    							<input name="observation" type="" class="form-control" id="observation" value="${customer.observation}">
   							</div>
   							
   							<button type="submit" class="btn btn-default"><%=Msg.getProperty("button.submit")%></button>

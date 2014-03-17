@@ -35,6 +35,7 @@ create table customer
   rg varchar(10) not null,
   insurance_company_id int not null,
   insurance_company_identification varchar(300) not null,
+  observation varchar(300) not null,
   unique(customer_id, cpf),
   constraint customer_pk primary key(customer_id)
 )
@@ -60,6 +61,13 @@ create table medic_insurance_company
   constraint insurance_company_fk foreign key(insurance_company_id) references insurance_company(insurance_company_id) on delete cascade
 )
 
+create table role 
+(
+  role_id serial not null,
+  name varchar(300) not null,
+  unique(role_id),
+  constraint role_pk primary key(role_id)
+)
 
 -- Just for learn
 drop table credential

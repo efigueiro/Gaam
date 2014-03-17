@@ -45,6 +45,31 @@ public class UserDao extends BaseDao {
 		}
 		return user;
 	}
+	
+	public User retrieveByEmail(String email) throws Exception {
+		Connection conn = this.getConnection();
+		User user = new User();
+		String sql = "select * from users where email = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, email);
+			ResultSet rs = pstm.executeQuery();
+			if (rs.next()) {
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
+				user.setUserId(rs.getInt("user_id"));
+				user.setRole(rs.getString("role"));
+				user.setStatus(rs.getString("status"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+		}
+		return user;
+	}
 
 	public String create(User user) throws Exception {
         String message = "";

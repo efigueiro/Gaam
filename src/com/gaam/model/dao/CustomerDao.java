@@ -48,19 +48,17 @@ public class CustomerDao extends BaseDao {
 		return user;
 	}
 
-	// arrumar...
 	public String create(Customer customer) throws Exception {
 		String message = "";
 		Connection conn = this.getConnection();
-		String sql = "insert into customer(email, password, status, role)"
+		String sql = "insert into customer(name, phone, address, observation)"
 				+ "values(?,?,?,?);";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			/*
-			 * pstm.setString(1, user.getEmail()); pstm.setString(2,
-			 * user.getPassword()); pstm.setString(3, user.getStatus());
-			 * pstm.setString(4, user.getRole());
-			 */
+			pstm.setString(1, insuranceCompany.getName());
+			pstm.setString(2, insuranceCompany.getPhone());
+			pstm.setString(3, insuranceCompany.getAddress());
+			pstm.setString(4, insuranceCompany.getObservation());
 			pstm.execute();
 			pstm.close();
 			conn.close();
