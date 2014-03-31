@@ -77,19 +77,19 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession();
                 session.setAttribute("authenticated", authenticated);
                 
-                if(authenticated.getRole().equalsIgnoreCase("admin")){
+                if(authenticated.getRole().equalsIgnoreCase("administrador")){
                 	request.getRequestDispatcher("modules/admin/main.jsp").forward(request, response);
                 }
                 
-                if(authenticated.getRole().equalsIgnoreCase("medic")){
+                if(authenticated.getRole().equalsIgnoreCase("medico")){
                 	request.getRequestDispatcher("modules/medic/main.jsp").forward(request, response);
                 }
                 
-                if(authenticated.getRole().equalsIgnoreCase("customer")){
+                if(authenticated.getRole().equalsIgnoreCase("cliente")){
                 	request.getRequestDispatcher("modules/customer/main.jsp").forward(request, response);
                 }
                 
-                if(authenticated.getRole().equalsIgnoreCase("employee")){
+                if(authenticated.getRole().equalsIgnoreCase("empregado")){
                 	request.getRequestDispatcher("modules/employee/main.jsp").forward(request, response);
                 }
                 

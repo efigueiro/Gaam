@@ -20,7 +20,6 @@ public class Customer implements Serializable {
 	private String insuranceCompanyIdentification;
 	private InsuranceCompany insuranceCompany;
 	private String observation;
-	private int roleId
 
 	public String getName() {
 		return name;
@@ -117,13 +116,5 @@ public class Customer implements Serializable {
 
 	public void setObservation(String observation) {
 		this.observation = observation;
-	}
-	
-	public int getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
 	}
 }

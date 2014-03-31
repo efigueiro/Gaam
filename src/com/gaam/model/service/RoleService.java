@@ -23,4 +23,8 @@ public class RoleService {
 		return RoleDao.getInstance().retrieveAll();
 	}
 	
+	public Role retrieveById(int roleId) throws Exception {
+		return RoleDao.getInstance().retrieveById(roleId);
+	}
+	
 }

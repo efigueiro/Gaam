@@ -51,14 +51,20 @@ public class CustomerDao extends BaseDao {
 	public String create(Customer customer) throws Exception {
 		String message = "";
 		Connection conn = this.getConnection();
-		String sql = "insert into customer(name, phone, address, observation)"
-				+ "values(?,?,?,?);";
+		String sql = "insert into customer(user_id, name, phone, address, observation, cpf, rg, insurance_company_id, insurance_company_identification, observation)"
+				+ "values(?,?,?,?,?,?,?,?,?,?);";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setString(1, insuranceCompany.getName());
-			pstm.setString(2, insuranceCompany.getPhone());
-			pstm.setString(3, insuranceCompany.getAddress());
-			pstm.setString(4, insuranceCompany.getObservation());
+			pstm.setInt(1, customer.getUser().getUserId());
+			pstm.setString(2, customer.getName());
+			pstm.setString(3, customer.getPhone());
+			pstm.setString(4, customer.getAddress());
+			pstm.setString(5, customer.getObservation());
+			pstm.setString(6, customer.getCpf());
+			pstm.setString(7, customer.getRg());
+			pstm.setInt(8, customer.getInsuranceCompany().getInsuranceCompanyId());
+			pstm.setString(7, customer.getInsuranceCompanyIdentification());
+			pstm.setString(7, customer.getObservation());
 			pstm.execute();
 			pstm.close();
 			conn.close();

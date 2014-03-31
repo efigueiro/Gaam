@@ -66,11 +66,11 @@
                                  	<div class="alert alert-info">${message}</div>
                         		</c:if>
     							<label for="email"><%=Msg.getProperty("label.email")%></label>
-    							<input name="email" type="email" class="form-control" id="email" value="${email}">
+    							<input name="email" type="email" class="form-control" id="email" value="${user.email}">
   							</div>
   							<div class="form-group">
   								<label for="password"><%=Msg.getProperty("label.password")%></label>
-    							<input name="password" type="" class="form-control" id="password" value="${password}">
+    							<input name="password" type="" class="form-control" id="password" value="${user.password}">
   							</div>
   							<div class="form-group">
   								<label for="name"><%=Msg.getProperty("label.name")%></label>

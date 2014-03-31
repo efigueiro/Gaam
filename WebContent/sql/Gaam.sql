@@ -69,6 +69,14 @@ create table role
   constraint role_pk primary key(role_id)
 )
 
+create table medic_category 
+(
+  medic_category_id serial not null,
+  name varchar(300) not null,
+  unique(medic_category_id),
+  constraint medic_category_pk primary key(medic_category_id)
+)
+
 -- Just for learn
 drop table credential
 create table credential -- não foi implementada
