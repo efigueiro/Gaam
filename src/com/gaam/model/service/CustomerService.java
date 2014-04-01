@@ -1,6 +1,8 @@
 package com.gaam.model.service;
 
+import com.gaam.model.dao.CustomerDao;
 import com.gaam.model.dao.LoginDao;
+import com.gaam.model.entity.Customer;
 import com.gaam.model.entity.User;
 
 public class CustomerService {
@@ -21,6 +23,10 @@ public class CustomerService {
 		User authenticated = new User();
 		authenticated = LoginDao.getInstance().authentication(user);
 		return authenticated;
+	}
+	
+	public String create(Customer customer) throws Exception {
+		return CustomerDao.getInstance().create(customer);
 	}
 
 }

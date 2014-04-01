@@ -33,7 +33,6 @@ create table customer
   birth_date varchar(10),
   cpf varchar(150) not null,
   rg varchar(10) not null,
-  insurance_company_identification varchar(300) not null,
   observation varchar(300) not null,
   unique(customer_id, cpf),
   constraint customer_pk primary key(customer_id)
@@ -43,6 +42,7 @@ create table customer_insurance_company
 (
   customer_id integer not null,
   insurance_company_id integer not null,
+  insurance_company_identification varchar(300) not null,
   constraint customer_fk foreign key(customer_id) references customer(customer_id) on delete cascade,
   constraint insurance_company_fk foreign key(insurance_company_id) references insurance_company(insurance_company_id) on delete cascade
 )

@@ -51,7 +51,7 @@ public class CustomerDao extends BaseDao {
 	public String create(Customer customer) throws Exception {
 		String message = "";
 		Connection conn = this.getConnection();
-		String sql = "insert into customer(user_id, name, phone, address, observation, cpf, rg, insurance_company_id, insurance_company_identification, observation)"
+		String sql = "insert into customer(user_id, name, phone, address, observation, cpf, rg, observation)"
 				+ "values(?,?,?,?,?,?,?,?,?,?);";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
@@ -62,9 +62,7 @@ public class CustomerDao extends BaseDao {
 			pstm.setString(5, customer.getObservation());
 			pstm.setString(6, customer.getCpf());
 			pstm.setString(7, customer.getRg());
-			pstm.setInt(8, customer.getInsuranceCompany().getInsuranceCompanyId());
-			pstm.setString(7, customer.getInsuranceCompanyIdentification());
-			pstm.setString(7, customer.getObservation());
+			pstm.setString(8, customer.getObservation());
 			pstm.execute();
 			pstm.close();
 			conn.close();
@@ -76,9 +74,36 @@ public class CustomerDao extends BaseDao {
 		}
 		return message;
 	}
-
+	
+	public String customerInsuranceCompany(int customerId, int insuranceCompany_id, String insuranceCompanyIdentification) throws Exception {
+		String message = "";
+		Connection conn = this.getConnection();
+		String sql = "insert into customer_insurance_company(user_id, insurance_company_id, insurance_company_identification)"
+				+ "values(?,?,?);";
+		try {
+			/*PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, customer.getUser().getUserId());
+			pstm.setString(2, customer.getName());
+			pstm.setString(3, customer.getPhone());
+			pstm.setString(4, customer.getAddress());
+			pstm.setString(5, customer.getObservation());
+			pstm.setString(6, customer.getCpf());
+			pstm.setString(7, customer.getRg());
+			pstm.setString(8, customer.getObservation());
+			pstm.execute();
+			pstm.close();
+			conn.close();
+*/
+			message = Msg.getProperty("message.success");
+		} catch (Exception e) {
+			message = e + " " + Msg.getProperty("message.error");
+			conn.close();
+		}
+		return message;
+	}
+	
 	// search for partial or full name
-	public List<Customer> retrieveByFilter(String keyword) throws Exception {
+	/*public List<Customer> retrieveByFilter(String keyword) throws Exception {
 		Connection conn = this.getConnection();
 		List<Customer> customerList = new ArrayList<Customer>();
 		String sql = "select * from customer where name ilike ? order by name";
@@ -111,5 +136,5 @@ public class CustomerDao extends BaseDao {
 			conn.close();
 		}
 		return customerList;
-	}
+	}*/
 }

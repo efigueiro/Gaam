@@ -14,6 +14,7 @@ import com.gaam.model.entity.Customer;
 import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.Role;
 import com.gaam.model.entity.User;
+import com.gaam.model.service.CustomerService;
 import com.gaam.model.service.InsuranceCompanyService;
 import com.gaam.model.service.RoleService;
 import com.gaam.model.service.UserService;
@@ -139,6 +140,7 @@ public class CreateCustomerController extends HttpServlet {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				isOk = false;
 			}
 		}
 		
@@ -149,9 +151,22 @@ public class CreateCustomerController extends HttpServlet {
 		customer.setPhone(phone);
 		customer.setRg(rg);
 		customer.setObservation(observation);
-		customer.setInsuranceCompany(insuranceCompany);
-		customer.setInsuranceCompanyIdentification(insuranceCompanyIdentification);
 		customer.setUser(user);
+		customer.getInsuranceCompanyList().add(insuranceCompany);
+		
+		// Create customer
+		if(isOk) {
+			try {
+				message = CustomerService.getInstance().create(customer);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				isOk = false;
+			}
+		}
+		
+		// Insert into customer_insurance_company table
+		
 		
 		// Problema de foward para cada role deve ser resolvido pegando o usuário da sessão com sua role.
 		request.setAttribute("user", user);
