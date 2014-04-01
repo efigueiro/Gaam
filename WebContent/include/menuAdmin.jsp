@@ -39,6 +39,7 @@
         				<ul class="dropdown-menu">
           					<li><a href="<%=request.getContextPath()%>/modules/admin/createMedic.jsp"><%=Msg.getProperty("action.add")%></a></li>
           					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
+          					<li><a href="<%=request.getContextPath()%>/modules/admin/medicSetup.jsp"><%=Msg.getProperty("action.setup")%></a></li>
         				</ul>
       				</li>
       				

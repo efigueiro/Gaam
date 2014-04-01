@@ -30,14 +30,21 @@ create table customer
   name varchar(300) not null,
   phone varchar(150) not null,
   address varchar(300) not null,
-  birth_date varchar(10) not null,
+  birth_date varchar(10),
   cpf varchar(150) not null,
   rg varchar(10) not null,
-  insurance_company_id int not null,
   insurance_company_identification varchar(300) not null,
   observation varchar(300) not null,
   unique(customer_id, cpf),
   constraint customer_pk primary key(customer_id)
+)
+
+create table customer_insurance_company
+(
+  customer_id integer not null,
+  insurance_company_id integer not null,
+  constraint customer_fk foreign key(customer_id) references customer(customer_id) on delete cascade,
+  constraint insurance_company_fk foreign key(insurance_company_id) references insurance_company(insurance_company_id) on delete cascade
 )
 
 create table medic 
@@ -61,6 +68,22 @@ create table medic_insurance_company
   constraint insurance_company_fk foreign key(insurance_company_id) references insurance_company(insurance_company_id) on delete cascade
 )
 
+create table category 
+(
+  category_id serial not null,
+  name varchar(300) not null,
+  unique(category_id),
+  constraint category_pk primary key(category_id)
+)
+
+create table medic_category
+(
+  medic_id integer not null,
+  category_id integer not null,
+  constraint medic_fk foreign key(medic_id) references medic(medic_id),
+  constraint category_fk foreign key(category_id) references category(category_id)
+)
+
 create table role 
 (
   role_id serial not null,
@@ -69,13 +92,17 @@ create table role
   constraint role_pk primary key(role_id)
 )
 
-create table medic_category 
-(
-  medic_category_id serial not null,
-  name varchar(300) not null,
-  unique(medic_category_id),
-  constraint medic_category_pk primary key(medic_category_id)
-)
+
+--carga inicial
+insert into role(name)
+values('medico')
+
+insert into users(email, password, status, role)
+values('everson.figueiro@gmail.com', 'scorpion2014', 'ativo', 'administrador')
+
+
+-- ================================================================================================================
+
 
 -- Just for learn
 drop table credential

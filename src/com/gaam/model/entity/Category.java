@@ -3,16 +3,22 @@ package com.gaam.model.entity;
 import java.io.Serializable;
 import java.util.List;
 
-public class MedicCategory implements Serializable {
+public class Category implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int medicCategoryId;
+	private int categoryId;
 	private String name;
 	private List<Medic> medicList;
 	
+	public int getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 	public String getName() {
 		return name;
 	}
@@ -24,12 +30,6 @@ public class MedicCategory implements Serializable {
 	}
 	public void setMedicList(List<Medic> medicList) {
 		this.medicList = medicList;
-	}
-	public int getMedicCategoryId() {
-		return medicCategoryId;
-	}
-	public void setMedicCategoryId(int medicCategoryId) {
-		this.medicCategoryId = medicCategoryId;
 	}
 	
 }
