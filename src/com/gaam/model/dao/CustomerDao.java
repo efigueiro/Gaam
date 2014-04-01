@@ -3,11 +3,8 @@ package com.gaam.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.gaam.model.entity.Customer;
-import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.User;
 import com.gaam.util.Msg;
 
@@ -75,25 +72,20 @@ public class CustomerDao extends BaseDao {
 		return message;
 	}
 	
-	public String customerInsuranceCompany(int customerId, int insuranceCompany_id, String insuranceCompanyIdentification) throws Exception {
+	public String customerInsuranceCompany(int customerId, int insuranceCompanyId, String insuranceCompanyIdentification) throws Exception {
 		String message = "";
 		Connection conn = this.getConnection();
 		String sql = "insert into customer_insurance_company(user_id, insurance_company_id, insurance_company_identification)"
 				+ "values(?,?,?);";
 		try {
-			/*PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, customer.getUser().getUserId());
-			pstm.setString(2, customer.getName());
-			pstm.setString(3, customer.getPhone());
-			pstm.setString(4, customer.getAddress());
-			pstm.setString(5, customer.getObservation());
-			pstm.setString(6, customer.getCpf());
-			pstm.setString(7, customer.getRg());
-			pstm.setString(8, customer.getObservation());
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, customerId);
+			pstm.setInt(2, insuranceCompanyId);
+			pstm.setString(3, insuranceCompanyIdentification);
 			pstm.execute();
 			pstm.close();
 			conn.close();
-*/
+			
 			message = Msg.getProperty("message.success");
 		} catch (Exception e) {
 			message = e + " " + Msg.getProperty("message.error");

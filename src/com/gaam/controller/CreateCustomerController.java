@@ -104,10 +104,8 @@ public class CreateCustomerController extends HttpServlet {
 		
 		// Create user
 		if(isOk) {
-			
 			// remove after
 			status = "active";
-			
 			user.setEmail(email);
 			user.setPassword(password);
 			user.setRole(role.getName());

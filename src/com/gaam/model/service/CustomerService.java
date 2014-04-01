@@ -28,5 +28,9 @@ public class CustomerService {
 	public String create(Customer customer) throws Exception {
 		return CustomerDao.getInstance().create(customer);
 	}
+	
+	public String customerInsuranceCompany(int customerId, int insuranceCompanyId, String insuranceCompanyIdentification) throws Exception {
+		return CustomerDao.getInstance().customerInsuranceCompany(customerId, insuranceCompanyId, insuranceCompanyIdentification);
+	}
 
 }
