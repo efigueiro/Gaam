@@ -49,7 +49,7 @@ public class CategoryDao extends BaseDao {
 	public Category retrieveByName(String name) throws Exception {
 		Connection conn = this.getConnection();
 		Category category = new Category();
-		String sql = "select * from category where name ilike ?";
+		String sql = "select * from category where name = ?";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, name);
@@ -151,7 +151,7 @@ public class CategoryDao extends BaseDao {
 		return null;
 	}
 	
-	public String update(Category category) throws Exception {
+	/*public String update(Category category) throws Exception {
 		String message = "";
 		Connection conn = this.getConnection();
 		String sql = "update category set medic_category_id=?, name=?";
@@ -169,6 +169,6 @@ public class CategoryDao extends BaseDao {
 			conn.close();
 		}
 		return message;
-	}
+	}*/
 
 }
