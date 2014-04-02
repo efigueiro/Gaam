@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.gaam.model.entity.Customer;
+import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.User;
 import com.gaam.util.Msg;
 
@@ -129,4 +130,62 @@ public class CustomerDao extends BaseDao {
 		}
 		return customerList;
 	}*/
+	
+	public Customer retrieveRg(String rg) throws Exception {
+		Connection conn = this.getConnection();
+		Customer customer = new Customer();
+		String sql = "select * from customer where rg = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, rg);
+			ResultSet rs = pstm.executeQuery();
+			if (rs.next()) {
+				customer.setAddress(rs.getString("address"));
+				customer.setBirthDate(rs.getString("birth_date"));
+				customer.setCity(rs.getString("city"));
+				customer.setCountry(rs.getString("country"));
+				customer.setCpf(rs.getString("cpf"));
+				customer.setName(rs.getString("name"));
+				customer.setObservation(rs.getString("observation"));
+				customer.setPhone(rs.getString("phone"));
+				customer.setRg(rs.getString("name"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+		}
+		return customer;
+	}
+	
+	public Customer retrieveCpf(String cpf) throws Exception {
+		Connection conn = this.getConnection();
+		Customer customer = new Customer();
+		String sql = "select * from customer where cpf = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, cpf);
+			ResultSet rs = pstm.executeQuery();
+			if (rs.next()) {
+				customer.setAddress(rs.getString("address"));
+				customer.setBirthDate(rs.getString("birth_date"));
+				customer.setCity(rs.getString("city"));
+				customer.setCountry(rs.getString("country"));
+				customer.setCpf(rs.getString("cpf"));
+				customer.setName(rs.getString("name"));
+				customer.setObservation(rs.getString("observation"));
+				customer.setPhone(rs.getString("phone"));
+				customer.setRg(rs.getString("name"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+		}
+		return customer;
+	}
 }
