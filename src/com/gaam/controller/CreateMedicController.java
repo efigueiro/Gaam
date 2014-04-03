@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.gaam.model.entity.Customer;
 import com.gaam.model.entity.InsuranceCompany;
+import com.gaam.model.entity.Medic;
 import com.gaam.model.entity.Role;
 import com.gaam.model.entity.User;
 import com.gaam.model.service.CustomerService;
@@ -49,27 +49,26 @@ public class CreateMedicController extends HttpServlet {
 		
 		String message = "";
 		boolean isOk = false;
+		
 		User user = new User();
-		Customer customer = new Customer();
+		Medic medic = new Medic();
 		InsuranceCompany insuranceCompany = new InsuranceCompany();
 		Role role = new Role();
 		
+		// User
 		String email = (String) request.getParameter("email");
 		String password = (String) request.getParameter("password");
 		String status = (String) request.getParameter("status");
+		
+		// Medic
 		String name = (String) request.getParameter("name");
 		String phone = (String) request.getParameter("phone");
 		String address = (String) request.getParameter("address");
-		String cpf = (String) request.getParameter("cpf");
-		String rg = (String) request.getParameter("rg");
-		String insuranceCompanyId = (String) request.getParameter("insuranceCompany");
-		String insuranceCompanyIdentification = (String) request.getParameter("insuranceCompanyIdentification");
+		String crm = (String) request.getParameter("crm");
 		String observation = (String) request.getParameter("observation");
-		String strRole = (String) request.getParameter("role");
-		int intRole = Integer.parseInt(strRole);
 				
 		// Fields validation
-		if(StringUtils.isEmpty(email) || StringUtils.isEmpty(name) || StringUtils.isEmpty(cpf) || StringUtils.isEmpty(rg) || StringUtils.isEmpty(password)) {
+		if(StringUtils.isEmpty(email) || StringUtils.isEmpty(name) || StringUtils.isEmpty(crm) || StringUtils.isEmpty(password)) {
 			message = Msg.getProperty("message.user.mandatory.fields");
 			isOk = false;
 		} else {

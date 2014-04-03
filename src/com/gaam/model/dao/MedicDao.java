@@ -69,4 +69,55 @@ public class MedicDao extends BaseDao {
 		}
 		return message;
 	}
+	
+	public Medic retrieveName(String name) throws Exception {
+		Connection conn = this.getConnection();
+		Medic medic = new Medic();
+		String sql = "select * from medic where name = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, name);
+			ResultSet rs = pstm.executeQuery();
+			if (rs.next()) {
+				medic.setAddress(rs.getString("address"));
+				medic.setCrm(rs.getString("crm"));
+				medic.setName(rs.getString("name"));
+				medic.setObservation(rs.getString("name"));
+				medic.setPhone(rs.getString("phone"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+		}
+		return medic;
+	}
+	
+	public Medic retrieveByCrm(String crm) throws Exception {
+		Connection conn = this.getConnection();
+		Medic medic = new Medic();
+		String sql = "select * from medic where crm = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, crm);
+			ResultSet rs = pstm.executeQuery();
+			if (rs.next()) {
+				medic.setAddress(rs.getString("address"));
+				medic.setCrm(rs.getString("crm"));
+				medic.setName(rs.getString("name"));
+				medic.setObservation(rs.getString("name"));
+				medic.setPhone(rs.getString("phone"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+		}
+		return medic;
+	}
 }
+
