@@ -57,7 +57,7 @@ public class MedicDao extends BaseDao {
 			pstm.setString(3,  medic.getCrm());
 			pstm.setString(4,  medic.getName());
 			pstm.setString(5,  medic.getPhone());
-			pstm.setString(5,  medic.getObservation());
+			pstm.setString(6,  medic.getObservation());
 			pstm.execute();
 			pstm.close();
 			conn.close();

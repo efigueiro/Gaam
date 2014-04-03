@@ -3,6 +3,8 @@
 <%@ page import="com.gaam.util.Msg"%>
 <%@ page import="com.gaam.model.entity.Category"%>
 <%@ page import="com.gaam.model.service.CategoryService"%>
+<%@ page import="com.gaam.model.entity.InsuranceCompany"%>
+<%@ page import="com.gaam.model.service.InsuranceCompanyService"%>
 <%@ page import="java.util.*"%>
 
 <!DOCTYPE html>
@@ -36,6 +38,11 @@
   		List<Category> categoryList = new ArrayList<Category>();
         categoryList = CategoryService.getInstance().retrieveAll();
         request.setAttribute("categoryList", categoryList);
+        
+     	// Retrieve all insurance companies for insurance company combo box.
+  		List<InsuranceCompany> insuranceCompanyList = new ArrayList<InsuranceCompany>();
+        insuranceCompanyList = InsuranceCompanyService.getInstance().retrieveAll();
+        request.setAttribute("insuranceCompanyList", insuranceCompanyList);
 	%>
   <!-- end scripts -->
 
@@ -86,6 +93,14 @@
     							<select class="form-control" name="category">
     								<c:forEach var="category" items="${categoryList}">
                                     	<option value="${category.categoryId}">${category.name}</option>
+									</c:forEach>
+								</select>
+  							</div>
+  							<div class="form-group">
+  								<label for="insuranceCompany"><%=Msg.getProperty("label.insuranceCompanyAssociate")%></label>
+    							<select class="form-control" name="insuranceCompany">
+    								<c:forEach var="insuranceCompany" items="${insuranceCompanyList}">
+                                    	<option value="${insuranceCompany.insuranceCompanyId}">${insuranceCompany.name}</option>
 									</c:forEach>
 								</select>
   							</div>
