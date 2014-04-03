@@ -9,11 +9,12 @@ public class Medic implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int medicId;
 	private String name;
 	private String phone;
 	private String address;
 	private String crm;
-	private String speciality;
+	private Category category;
 	private User user;
 	private String observation;
 	private List<InsuranceCompany> insuranceCompanyList;
@@ -50,14 +51,6 @@ public class Medic implements Serializable {
 		this.crm = crm;
 	}
 
-	public String getSpeciality() {
-		return speciality;
-	}
-
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
-	}
-
 	public List<InsuranceCompany> getInsuranceCOmpanyList() {
 		return insuranceCompanyList;
 	}
@@ -81,6 +74,22 @@ public class Medic implements Serializable {
 
 	public void setObservation(String observation) {
 		this.observation = observation;
+	}
+
+	public int getMedicId() {
+		return medicId;
+	}
+
+	public void setMedicId(int medicId) {
+		this.medicId = medicId;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

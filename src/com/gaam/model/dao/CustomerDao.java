@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.gaam.model.entity.Customer;
-import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.User;
 import com.gaam.util.Msg;
 

@@ -10,13 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.gaam.model.dao.MedicDao;
+import com.gaam.model.entity.Category;
 import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.Medic;
 import com.gaam.model.entity.Role;
 import com.gaam.model.entity.User;
-import com.gaam.model.service.CustomerService;
+import com.gaam.model.service.CategoryService;
 import com.gaam.model.service.InsuranceCompanyService;
-import com.gaam.model.service.RoleService;
+import com.gaam.model.service.MedicService;
 import com.gaam.model.service.UserService;
 import com.gaam.util.Msg;
 
@@ -65,7 +67,12 @@ public class CreateMedicController extends HttpServlet {
 		String phone = (String) request.getParameter("phone");
 		String address = (String) request.getParameter("address");
 		String crm = (String) request.getParameter("crm");
+		String strCategory = (String) request.getParameter("category");
+		String strInsuranceCompany = (String) request.getParameter("insuranceCompany");
 		String observation = (String) request.getParameter("observation");
+		
+		// Insurance company
+		String insuranceCompanyId = (String) request.getParameter("insuranceCompanyId");
 				
 		// Fields validation
 		if(StringUtils.isEmpty(email) || StringUtils.isEmpty(name) || StringUtils.isEmpty(crm) || StringUtils.isEmpty(password)) {
@@ -90,16 +97,16 @@ public class CreateMedicController extends HttpServlet {
 				message = e.getMessage();
 			}
 		}
-		
+		 
 		// Retrieve role
-		if(isOk){
+		/*if(isOk){
 			try {
 				role = RoleService.getInstance().retrieveById(intRole);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		// Create user
 		if(isOk) {
@@ -107,7 +114,7 @@ public class CreateMedicController extends HttpServlet {
 			status = "active";
 			user.setEmail(email);
 			user.setPassword(password);
-			user.setRole(role.getName());
+			user.setRole("medico");
 			user.setStatus(status);
 			try {
 				message = UserService.getInstance().createUser(user);
@@ -141,20 +148,29 @@ public class CreateMedicController extends HttpServlet {
 			}
 		}
 		
-		// Set customer for dont lose data on screen
-		customer.setAddress(address);
-		customer.setCpf(cpf);
-		customer.setName(name);
-		customer.setPhone(phone);
-		customer.setRg(rg);
-		customer.setObservation(observation);
-		customer.setUser(user);
-		customer.getInsuranceCompanyList().add(insuranceCompany);
+		// Buscando category
+		Category category = new Category();
+		category.setCategoryId(Integer.parseInt(strCategory));
+		try {
+			category = CategoryService.getInstance().retrieveById(category.getCategoryId());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		// Create customer
+		// Set customer for dont lose data on screen
+		medic.setAddress(address);
+		medic.setCrm(crm);
+		medic.setName(name);
+		medic.setObservation(observation);
+		medic.setPhone(phone);
+		medic.setUser(user);
+		
+		
+		// Create medic
 		if(isOk) {
 			try {
-				message = CustomerService.getInstance().create(customer);
+				message = MedicService.getInstance().create(medic);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -162,14 +178,26 @@ public class CreateMedicController extends HttpServlet {
 			}
 		}
 		
-		// Insert into customer_insurance_company table
+		// Insert into medic_insurance_company table
+		try {
+			medic = MedicService.getInstance().retrieveByCrm(medic.getCrm());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		try {
+			MedicDao.getInstance().medicInsuranceCompany(medic.getMedicId(), insuranceCompany.getInsuranceCompanyId());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// Problema de foward para cada role deve ser resolvido pegando o usuário da sessão com sua role.
 		request.setAttribute("user", user);
-		request.setAttribute("customer", customer);
+		request.setAttribute("medic", medic);
 		request.setAttribute("message", message);
-		request.getRequestDispatcher("modules/admin/createCustomer.jsp").forward(request, response);
+		request.getRequestDispatcher("modules/admin/createMedic.jsp").forward(request, response);
 		
 	}
 

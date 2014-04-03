@@ -22,18 +22,21 @@ public class MedicDao extends BaseDao {
 		return medicDao;
 	}
 
-	public User retrieveById(int userId) throws Exception {
+	public Medic retrieveById(int userId) throws Exception {
 		Connection conn = this.getConnection();
-		User user = new User();
-		String sql = "select * from users where user_id = ?";
+		Medic medic = new Medic();
+		String sql = "select * from medic where medic_id = ?";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, userId);
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
-				user.setEmail(rs.getString("email"));
-				user.setPassword(rs.getString("password"));
-				user.setUserId(rs.getInt("user_id"));
+				medic.setMedicId(rs.getInt("medic_id"));
+				medic.setAddress(rs.getString("address"));
+				medic.setCrm(rs.getString("crm"));
+				medic.setName(rs.getString("name"));
+				medic.setObservation(rs.getString("name"));
+				medic.setPhone(rs.getString("phone"));
 			}
 			rs.close();
 			pstm.close();
@@ -42,7 +45,7 @@ public class MedicDao extends BaseDao {
 		} catch (Exception e) {
 
 		}
-		return user;
+		return medic;
 	}
 	
 	public String create(Medic medic) throws Exception {
@@ -54,10 +57,10 @@ public class MedicDao extends BaseDao {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, medic.getUser().getUserId());
 			pstm.setString(2, medic.getAddress());
-			pstm.setString(3,  medic.getCrm());
-			pstm.setString(4,  medic.getName());
-			pstm.setString(5,  medic.getPhone());
-			pstm.setString(6,  medic.getObservation());
+			pstm.setString(3, medic.getCrm());
+			pstm.setString(4, medic.getName());
+			pstm.setString(5, medic.getPhone());
+			pstm.setString(6, medic.getObservation());
 			pstm.execute();
 			pstm.close();
 			conn.close();
@@ -79,6 +82,7 @@ public class MedicDao extends BaseDao {
 			pstm.setString(1, name);
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
+				medic.setMedicId(rs.getInt("medic_id"));
 				medic.setAddress(rs.getString("address"));
 				medic.setCrm(rs.getString("crm"));
 				medic.setName(rs.getString("name"));
@@ -104,6 +108,7 @@ public class MedicDao extends BaseDao {
 			pstm.setString(1, crm);
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
+				medic.setMedicId(rs.getInt("medic_id"));
 				medic.setAddress(rs.getString("address"));
 				medic.setCrm(rs.getString("crm"));
 				medic.setName(rs.getString("name"));
@@ -118,6 +123,27 @@ public class MedicDao extends BaseDao {
 
 		}
 		return medic;
+	}
+	
+	public String medicInsuranceCompany(int medicId, int insuranceCompanyId) throws Exception {
+		String message = "";
+		Connection conn = this.getConnection();
+		String sql = "insert into medic_insurance_company(medic_id, insurance_company_id)"
+				+ "values(?,?);";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, medicId);
+			pstm.setInt(2, insuranceCompanyId);
+			pstm.execute();
+			pstm.close();
+			conn.close();
+			
+			message = Msg.getProperty("message.success");
+		} catch (Exception e) {
+			message = e + " " + Msg.getProperty("message.error");
+			conn.close();
+		}
+		return message;
 	}
 }
 
