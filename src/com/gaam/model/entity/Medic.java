@@ -15,6 +15,7 @@ public class Medic implements Serializable {
 	private String crm;
 	private String speciality;
 	private User user;
+	private String observation;
 	private List<InsuranceCompany> insuranceCompanyList;
 
 	public String getName() {
@@ -72,6 +73,14 @@ public class Medic implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getObservation() {
+		return observation;
+	}
+
+	public void setObservation(String observation) {
+		this.observation = observation;
 	}
 
 }

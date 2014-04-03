@@ -48,8 +48,8 @@ public class MedicDao extends BaseDao {
 	public String create(Medic medic) throws Exception {
 		String message = "";
 		Connection conn = this.getConnection();
-		String sql = "insert into medic(name, phone, address, observation)"
-				+ "values(?,?,?,?);";
+		String sql = "insert into medic(user_id, address, crm, name, phone, observation)"
+				+ "values(?,?,?,?,?,?);";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, medic.getUser().getUserId());
@@ -57,7 +57,7 @@ public class MedicDao extends BaseDao {
 			pstm.setString(3,  medic.getCrm());
 			pstm.setString(4,  medic.getName());
 			pstm.setString(5,  medic.getPhone());
-			pstm.setString(6,  medic.getSpeciality());
+			pstm.setString(5,  medic.getObservation());
 			pstm.execute();
 			pstm.close();
 			conn.close();

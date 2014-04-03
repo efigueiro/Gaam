@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.gaam.util.Msg"%>
+<%@ page import="com.gaam.model.entity.Category"%>
+<%@ page import="com.gaam.model.service.CategoryService"%>
+<%@ page import="java.util.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +29,15 @@
     <![endif]-->
     
   </head>
+  
+  <!-- scripts java -->
+  	<%
+  		// Retrieve all categories
+  		List<Category> categoryList = new ArrayList<Category>();
+        categoryList = CategoryService.getInstance().retrieveAll();
+        request.setAttribute("categoryList", categoryList);
+	%>
+  <!-- end scripts -->
 
   <body>
   
@@ -68,6 +80,14 @@
   							<div class="form-group">
   								<label for="crm"><%=Msg.getProperty("label.crm")%></label>
     							<input name="crm" type="" class="form-control" id="crm">
+  							</div>
+  							<div class="form-group">
+  								<label for="category"><%=Msg.getProperty("label.speciality")%></label>
+    							<select class="form-control" name="category">
+    								<c:forEach var="category" items="${categoryList}">
+                                    	<option value="${category.categoryId}">${category.name}</option>
+									</c:forEach>
+								</select>
   							</div>
   							<div class="form-group">
   								<label for="observation"><%=Msg.getProperty("label.observation")%></label>

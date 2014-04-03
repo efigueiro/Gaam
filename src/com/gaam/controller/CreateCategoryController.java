@@ -45,23 +45,35 @@ public class CreateCategoryController extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		String message = "";
-
+		boolean isOk;
+		isOk = true;
 		String name = (String) request.getParameter("name");
-
 		Category category = new Category();
-		category.setName(name);
 
+		// Procura categoria com o mesmo nome
+		try {
+			category = CategoryService.getInstance().retrieveByName(name);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			message = e.getMessage();
+		}
 		
-		if (StringUtils.isEmpty(name)) {
-			message = Msg.getProperty("message.category.mandatory.fields");
-		} else {
+		if(StringUtils.isNotEmpty(category.getName())) {
+			isOk = false;
+			message = Msg.getProperty("message.category.exist");
+		}
+		
+		// Criando categoria
+		category.setName(name);
+		
+		if(isOk) {
 			try {
 				message = CategoryService.getInstance().create(category);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				message = e.getMessage();
 			}
 		}
+				
 		request.setAttribute("message", message);
 		request.getRequestDispatcher("modules/admin/medicSetup.jsp").forward(request, response);
 	}

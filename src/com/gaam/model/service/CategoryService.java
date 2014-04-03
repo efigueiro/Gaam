@@ -46,8 +46,9 @@ public class CategoryService {
 	public Category retrieveById(int categoryId) throws Exception {
 		return CategoryDao.getInstance().retrieveById(categoryId);
 	}
-
-	public String update(Category category) throws Exception {
-		return CategoryDao.getInstance().update(category);
+	
+	public Category retrieveByName(String name) throws Exception {
+		return CategoryDao.getInstance().retrieveByName(name);
 	}
+
 }

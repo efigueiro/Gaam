@@ -60,7 +60,7 @@
   					
   						<table class="table table-hover">
   							<tr>
-  								<th class="header"><%=Msg.getProperty("label.especiality")%></th>
+  								<th class="header"><%=Msg.getProperty("label.speciality")%></th>
 								<th class="header"><%=Msg.getProperty("label.action")%></th>
 							</tr>
 							
