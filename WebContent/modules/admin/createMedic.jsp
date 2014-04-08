@@ -88,22 +88,27 @@
   								<label for="crm"><%=Msg.getProperty("label.crm")%></label>
     							<input name="crm" type="" class="form-control" id="crm">
   							</div>
+  							
   							<div class="form-group">
   								<label for="category"><%=Msg.getProperty("label.speciality")%></label>
-    							<select class="form-control" name="category">
-    								<c:forEach var="category" items="${categoryList}">
-                                    	<option value="${category.categoryId}">${category.name}</option>
-									</c:forEach>
-								</select>
   							</div>
   							<div class="form-group">
-  								<label for="insuranceCompany"><%=Msg.getProperty("label.insuranceCompanyAssociate")%></label>
-    							<select class="form-control" name="insuranceCompany">
-    								<c:forEach var="insuranceCompany" items="${insuranceCompanyList}">
-                                    	<option value="${insuranceCompany.insuranceCompanyId}">${insuranceCompany.name}</option>
-									</c:forEach>
-								</select>
+  								<c:forEach var="category" items="${categoryList}">
+    								<input type="checkbox" name="category" value="${category.categoryId}">${category.name}<br>
+								</c:forEach>
   							</div>
+  							<br>
+  							
+  							<div class="form-group">
+  								<label for="category"><%=Msg.getProperty("label.insuranceCompanyAssociate")%></label>
+  							</div>
+  							<div class="form-group">
+  								<c:forEach var="insuranceCompany" items="${insuranceCompanyList}">
+    								<input type="checkbox" name="insuranceCompany" value="${insuranceCompany.insuranceCompanyId}">${insuranceCompany.name}<br>
+								</c:forEach>
+  							</div>
+  							<br>
+  							
   							<div class="form-group">
   								<label for="observation"><%=Msg.getProperty("label.observation")%></label>
     							<input name="observation" type="" class="form-control" id="observation">

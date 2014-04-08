@@ -71,8 +71,8 @@ public class CreateMedicController extends HttpServlet {
 		String strInsuranceCompany = (String) request.getParameter("insuranceCompany");
 		String observation = (String) request.getParameter("observation");
 		
-		// Insurance company
-		String insuranceCompanyId = (String) request.getParameter("insuranceCompanyId");
+		// Categories
+		String[] categoryList = request.getParameterValues("category");  
 				
 		// Fields validation
 		if(StringUtils.isEmpty(email) || StringUtils.isEmpty(name) || StringUtils.isEmpty(crm) || StringUtils.isEmpty(password)) {
@@ -134,7 +134,7 @@ public class CreateMedicController extends HttpServlet {
 			}
 		}
 		
-		// Retrieve insurance company
+		/*// Retrieve insurance company
 		if(isOk) {
 			try {
 				insuranceCompany = InsuranceCompanyService.getInstance().retrieveById(Integer.parseInt(insuranceCompanyId));
@@ -146,7 +146,7 @@ public class CreateMedicController extends HttpServlet {
 				e.printStackTrace();
 				isOk = false;
 			}
-		}
+		}*/
 		
 		// Buscando category
 		Category category = new Category();
