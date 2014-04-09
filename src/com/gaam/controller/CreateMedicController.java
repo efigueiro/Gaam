@@ -54,7 +54,6 @@ public class CreateMedicController extends HttpServlet {
 		
 		User user = new User();
 		Medic medic = new Medic();
-		InsuranceCompany insuranceCompany = new InsuranceCompany();
 		Role role = new Role();
 		
 		// User
@@ -67,15 +66,14 @@ public class CreateMedicController extends HttpServlet {
 		String phone = (String) request.getParameter("phone");
 		String address = (String) request.getParameter("address");
 		String crm = (String) request.getParameter("crm");
-		String strCategory = (String) request.getParameter("category");
-		String strInsuranceCompany = (String) request.getParameter("insuranceCompany");
 		String observation = (String) request.getParameter("observation");
 		
-		// Categories
+		// Categorie and insurance company lists
 		String[] categoryList = request.getParameterValues("category");  
+		String[] insuranceCompanyList = request.getParameterValues("insuranceCompany"); 
 				
 		// Fields validation
-		if(StringUtils.isEmpty(email) || StringUtils.isEmpty(name) || StringUtils.isEmpty(crm) || StringUtils.isEmpty(password)) {
+		if(StringUtils.isEmpty(email) || StringUtils.isEmpty(name) || StringUtils.isEmpty(crm) || StringUtils.isEmpty(password) || categoryList == null || insuranceCompanyList == null) {
 			message = Msg.getProperty("message.user.mandatory.fields");
 			isOk = false;
 		} else {
@@ -95,6 +93,21 @@ public class CreateMedicController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				message = e.getMessage();
+			}
+		}
+		
+		// Crm validation
+		if(isOk) {
+			try {
+				if(MedicService.getInstance().isValidCrm(crm)){
+					isOk = true;
+				} else {
+					isOk = false;
+					message = Msg.getProperty("message.crm.exist");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		 
@@ -134,38 +147,13 @@ public class CreateMedicController extends HttpServlet {
 			}
 		}
 		
-		/*// Retrieve insurance company
-		if(isOk) {
-			try {
-				insuranceCompany = InsuranceCompanyService.getInstance().retrieveById(Integer.parseInt(insuranceCompanyId));
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				isOk = false;
-			}
-		}*/
-		
-		// Buscando category
-		Category category = new Category();
-		category.setCategoryId(Integer.parseInt(strCategory));
-		try {
-			category = CategoryService.getInstance().retrieveById(category.getCategoryId());
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		// Set customer for dont lose data on screen
+		// Set medic for dont lose data on screen
 		medic.setAddress(address);
 		medic.setCrm(crm);
 		medic.setName(name);
 		medic.setObservation(observation);
 		medic.setPhone(phone);
 		medic.setUser(user);
-		
 		
 		// Create medic
 		if(isOk) {
@@ -178,20 +166,49 @@ public class CreateMedicController extends HttpServlet {
 			}
 		}
 		
-		// Insert into medic_insurance_company table
-		try {
-			medic = MedicService.getInstance().retrieveByCrm(medic.getCrm());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Loading medic created before
+		if(isOk) {
+			try {
+				medic = MedicService.getInstance().retrieveByCrm(crm);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				message = e.getMessage();
+			}
 		}
 		
-		try {
-			MedicDao.getInstance().medicInsuranceCompany(medic.getMedicId(), insuranceCompany.getInsuranceCompanyId());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Insert into medic_category table
+		if(isOk) {
+			for(int i = 0; i < categoryList.length; i++) {
+				try {
+					MedicService.getInstance().insertMedicCategory(medic.getMedicId(), categoryList[i]);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					message = e.getMessage();
+				}
+			}
 		}
+		
+
+		// Insert into medic_insuranceCompany table
+		if(isOk) {
+			for(int i = 0; i < insuranceCompanyList.length; i++) {
+				try {
+					MedicService.getInstance().insertMedicInsuranceCompany(medic.getMedicId(), insuranceCompanyList[i]);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					message = e.getMessage();
+				}
+			}
+		}		
 		
 		// Problema de foward para cada role deve ser resolvido pegando o usuário da sessão com sua role.
 		request.setAttribute("user", user);

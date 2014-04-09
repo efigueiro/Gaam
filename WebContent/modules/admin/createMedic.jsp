@@ -90,7 +90,7 @@
   							</div>
   							
   							<div class="form-group">
-  								<label for="category"><%=Msg.getProperty("label.speciality")%></label>
+  								<label for="category"><%=Msg.getProperty("label.medic.speciality")%></label>
   							</div>
   							<div class="form-group">
   								<c:forEach var="category" items="${categoryList}">
@@ -100,7 +100,7 @@
   							<br>
   							
   							<div class="form-group">
-  								<label for="category"><%=Msg.getProperty("label.insuranceCompanyAssociate")%></label>
+  								<label for="category"><%=Msg.getProperty("label.medic.insuranceCompanyAssociate")%></label>
   							</div>
   							<div class="form-group">
   								<c:forEach var="insuranceCompany" items="${insuranceCompanyList}">

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.gaam.model.entity.Medic;
-import com.gaam.model.entity.User;
 import com.gaam.util.Msg;
 
 public class MedicDao extends BaseDao {
@@ -134,6 +133,27 @@ public class MedicDao extends BaseDao {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, medicId);
 			pstm.setInt(2, insuranceCompanyId);
+			pstm.execute();
+			pstm.close();
+			conn.close();
+			
+			message = Msg.getProperty("message.success");
+		} catch (Exception e) {
+			message = e + " " + Msg.getProperty("message.error");
+			conn.close();
+		}
+		return message;
+	}
+	
+	public String medicCategory(int medicId, int categoryId) throws Exception {
+		String message = "";
+		Connection conn = this.getConnection();
+		String sql = "insert into medic_category(medic_id, category_id)"
+				+ "values(?,?);";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, medicId);
+			pstm.setInt(2, categoryId);
 			pstm.execute();
 			pstm.close();
 			conn.close();

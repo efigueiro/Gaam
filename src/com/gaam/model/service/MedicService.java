@@ -1,9 +1,9 @@
 package com.gaam.model.service;
 
-import com.gaam.model.dao.InsuranceCompanyDao;
+import org.apache.commons.lang3.StringUtils;
+
 import com.gaam.model.dao.LoginDao;
 import com.gaam.model.dao.MedicDao;
-import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.Medic;
 import com.gaam.model.entity.User;
 
@@ -37,6 +37,25 @@ public class MedicService {
 	
 	public Medic retrieveByCrm(String crm) throws Exception {
 		return MedicDao.getInstance().retrieveByCrm(crm);
+	}
+	
+	public boolean isValidCrm(String crm) throws Exception {
+		Medic medic = new Medic();
+		medic = MedicDao.getInstance().retrieveByCrm(crm);
+		
+		if(StringUtils.isEmpty(medic.getCrm())){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public String insertMedicCategory(int medicId, String categoryId) throws NumberFormatException, Exception {
+		return MedicDao.getInstance().medicCategory(medicId, Integer.parseInt(categoryId));
+	}
+	
+	public String insertMedicInsuranceCompany(int medicId, String insuranceCompanyId) throws NumberFormatException, Exception {
+		return MedicDao.getInstance().medicInsuranceCompany(medicId, Integer.parseInt(insuranceCompanyId));
 	}
 
 }

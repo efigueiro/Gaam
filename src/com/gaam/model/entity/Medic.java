@@ -14,9 +14,9 @@ public class Medic implements Serializable {
 	private String phone;
 	private String address;
 	private String crm;
-	private Category category;
 	private User user;
 	private String observation;
+	private List<Category> categoryList;
 	private List<InsuranceCompany> insuranceCompanyList;
 
 	public String getName() {
@@ -84,12 +84,11 @@ public class Medic implements Serializable {
 		this.medicId = medicId;
 	}
 
-	public Category getCategory() {
-		return category;
+	public List<Category> getCategoryList() {
+		return categoryList;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryList(List<Category> categoryList) {
+		this.categoryList = categoryList;
 	}
-
 }
