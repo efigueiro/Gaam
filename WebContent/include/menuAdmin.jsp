@@ -38,7 +38,7 @@
         				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=Msg.getProperty("menu.medic")%> <b class="caret"></b></a>
         				<ul class="dropdown-menu">
           					<li><a href="<%=request.getContextPath()%>/modules/admin/createMedic.jsp"><%=Msg.getProperty("action.add")%></a></li>
-          					<li><a href="#"><%=Msg.getProperty("action.search")%></a></li>
+          					<li><a href="<%=request.getContextPath()%>/modules/admin/retrieveMedic.jsp"><%=Msg.getProperty("action.search")%></a></li>
           					<li><a href="<%=request.getContextPath()%>/modules/admin/medicSetup.jsp"><%=Msg.getProperty("action.setup")%></a></li>
         				</ul>
       				</li>

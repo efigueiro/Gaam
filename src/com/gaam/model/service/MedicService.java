@@ -1,9 +1,13 @@
 package com.gaam.model.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.gaam.model.dao.LoginDao;
 import com.gaam.model.dao.MedicDao;
+import com.gaam.model.entity.Category;
 import com.gaam.model.entity.Medic;
 import com.gaam.model.entity.User;
 
@@ -56,6 +60,31 @@ public class MedicService {
 	
 	public String insertMedicInsuranceCompany(int medicId, String insuranceCompanyId) throws NumberFormatException, Exception {
 		return MedicDao.getInstance().medicInsuranceCompany(medicId, Integer.parseInt(insuranceCompanyId));
+	}
+	
+	public List<Medic> retrieveByFilter(String keyword) throws Exception {
+		List<Medic> medicList = new ArrayList<Medic>();
+		
+		medicList = MedicDao.getInstance().retrieveByFilter(keyword);
+		
+		for (Medic medic : medicList) {
+			List<Category> categoryList = new ArrayList<Category>();
+			List<Integer> categoryIdList = new ArrayList<Integer>();
+			categoryIdList = MedicDao.getInstance().retrieveMedicCategory(medic.getMedicId());
+			
+			for (Integer integer : categoryIdList) {
+				Category category = new Category();
+				category = CategoryService.getInstance().retrieveById(integer);
+				categoryList.add(category);
+			} 
+			medic.setCategoryList(categoryList);
+		}
+		
+		
+		
+		
+		return medicList;
+		
 	}
 
 }

@@ -3,7 +3,10 @@ package com.gaam.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.Medic;
 import com.gaam.util.Msg;
 
@@ -164,6 +167,56 @@ public class MedicDao extends BaseDao {
 			conn.close();
 		}
 		return message;
+	}
+	
+	public List<Medic> retrieveByFilter(String keyword) throws Exception {
+		Connection conn = this.getConnection();
+		List<Medic> medicList = new ArrayList<Medic>();
+		String sql = "select * from medic where name ilike ? order by name";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, "%" + keyword + "%");
+			ResultSet rs = pstm.executeQuery();
+			while (rs.next()) {
+				Medic medic = new Medic();
+				medic.setAddress(rs.getString("address"));
+				medic.setCrm(rs.getString("crm"));
+				medic.setMedicId(rs.getInt("medic_id"));
+				medic.setName(rs.getString("name"));
+				medic.setObservation(rs.getString("observation"));
+				medic.setPhone(rs.getString("phone"));
+				medicList.add(medic);
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			conn.close();
+		}
+		return medicList;
+	}
+	
+	public List<Integer> retrieveMedicCategory(int medicId) throws Exception {
+		Connection conn = this.getConnection();
+		List<Integer> categories = new ArrayList<Integer>();
+		int i = 0;
+		String sql = "select * from medic_category where medic_id = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, medicId);
+			ResultSet rs = pstm.executeQuery();
+			while (rs.next()) {
+				categories.add(rs.getInt("category_id"));
+			}
+			rs.close();
+			pstm.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			conn.close();
+		}
+		return categories;
 	}
 }
 
