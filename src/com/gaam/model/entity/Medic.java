@@ -51,15 +51,6 @@ public class Medic implements Serializable {
 		this.crm = crm;
 	}
 
-	public List<InsuranceCompany> getInsuranceCOmpanyList() {
-		return insuranceCompanyList;
-	}
-
-	public void setInsuranceCompanyList(
-			List<InsuranceCompany> insuranceCompanyList) {
-		this.insuranceCompanyList = insuranceCompanyList;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -90,5 +81,13 @@ public class Medic implements Serializable {
 
 	public void setCategoryList(List<Category> categoryList) {
 		this.categoryList = categoryList;
+	}
+
+	public List<InsuranceCompany> getInsuranceCompanyList() {
+		return insuranceCompanyList;
+	}
+
+	public void setInsuranceCompanyList(List<InsuranceCompany> insuranceCompanyList) {
+		this.insuranceCompanyList = insuranceCompanyList;
 	}
 }

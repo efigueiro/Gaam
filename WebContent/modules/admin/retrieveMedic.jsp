@@ -78,14 +78,22 @@
 								<th class="header"><%=Msg.getProperty("label.action")%></th>
 							</tr>
 							
-							<c:forEach var="insuranceCompany" items="${insuranceCompanyList}">
+							<c:forEach var="medic" items="${medicList}">
 								<tr>
 									<td>${medic.name}</td>
 									<td>${medic.phone}</td>
 									<td>${medic.address}</td>
 									<!-- abaixo deve entrar um for para as listas -->
-									<td>${medic.insuranceCompany}</td>
-									<td>${medic.speciality}</td>
+									<td>
+										<c:forEach var="insuranceCompany" items="${medic.insuranceCompanyList}">
+											<li style="list-style-type:none">${insuranceCompany.name}</li>
+										</c:forEach>
+									</td>
+									<td>
+										<c:forEach var="category" items="${medic.categoryList}">
+											<li style="list-style-type:none">${category.name}</li>
+										</c:forEach>
+									</td>
 									<td>
 										<a href="/Gaam/updateMedic?medicId=${medic.medicId}" title="<%=Msg.getProperty("tip.edit")%>" ><img src="<%=request.getContextPath()%>/img/Notepad.png" border="0"></a>
 										<a data-toggle="modal" href="#dialog" title="<%=Msg.getProperty("tip.delete")%>" style="margin-left: 10px;" onclick="document.getElementById('selectedValueId').value ='${medic.medicId}';document.getElementById('selectedValueName').value ='${medic.name}'" ><img src="<%=request.getContextPath()%>/img/Cross.png" border="0"></a>

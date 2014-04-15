@@ -6,8 +6,11 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import com.gaam.model.dao.LoginDao;
+import com.gaam.model.dao.MedicCategoryDao;
 import com.gaam.model.dao.MedicDao;
+import com.gaam.model.dao.MedicInsuranceCompanyDao;
 import com.gaam.model.entity.Category;
+import com.gaam.model.entity.InsuranceCompany;
 import com.gaam.model.entity.Medic;
 import com.gaam.model.entity.User;
 
@@ -55,11 +58,11 @@ public class MedicService {
 	}
 	
 	public String insertMedicCategory(int medicId, String categoryId) throws NumberFormatException, Exception {
-		return MedicDao.getInstance().medicCategory(medicId, Integer.parseInt(categoryId));
+		return MedicCategoryDao.getInstance().insertMedicCategory(medicId, Integer.parseInt(categoryId));
 	}
 	
 	public String insertMedicInsuranceCompany(int medicId, String insuranceCompanyId) throws NumberFormatException, Exception {
-		return MedicDao.getInstance().medicInsuranceCompany(medicId, Integer.parseInt(insuranceCompanyId));
+		return MedicInsuranceCompanyDao.getInstance().insertMedicInsuranceCompany(medicId, Integer.parseInt(insuranceCompanyId));
 	}
 	
 	public List<Medic> retrieveByFilter(String keyword) throws Exception {
@@ -67,10 +70,11 @@ public class MedicService {
 		
 		medicList = MedicDao.getInstance().retrieveByFilter(keyword);
 		
+		// Return categories
 		for (Medic medic : medicList) {
 			List<Category> categoryList = new ArrayList<Category>();
 			List<Integer> categoryIdList = new ArrayList<Integer>();
-			categoryIdList = MedicDao.getInstance().retrieveMedicCategory(medic.getMedicId());
+			categoryIdList = MedicCategoryDao.getInstance().retrieveMedicCategory(medic.getMedicId());
 			
 			for (Integer integer : categoryIdList) {
 				Category category = new Category();
@@ -79,12 +83,22 @@ public class MedicService {
 			} 
 			medic.setCategoryList(categoryList);
 		}
-		
-		
-		
+
+		// Return insurance companies
+		for (Medic medic : medicList) {
+			List<InsuranceCompany> insuranceCompanyList = new ArrayList<InsuranceCompany>();
+			List<Integer> insuranceCompanyIdList = new ArrayList<Integer>();
+			insuranceCompanyIdList = MedicInsuranceCompanyDao.getInstance().retrieveMedicInsuranceCompany(medic.getMedicId());
+			
+			for (Integer integer : insuranceCompanyIdList) {
+				InsuranceCompany insuranceCompany = new InsuranceCompany();
+				insuranceCompany = InsuranceCompanyService.getInstance().retrieveById(integer);
+				insuranceCompanyList.add(insuranceCompany);
+			} 
+			medic.setInsuranceCompanyList(insuranceCompanyList);
+		}
 		
 		return medicList;
-		
 	}
 
 }
