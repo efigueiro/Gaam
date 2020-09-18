@@ -54,7 +54,7 @@
     		<div class="row">
         		<div class="col-md-3"><img src="<%=request.getContextPath()%>/img/stethoscope.png"></div>
         		<div class="col-md-9"><h1><%=Msg.getProperty("application.name")%></h1>
-        			<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas com o especialista que você desejar e pelo convênio que você escolher.</p>
+        			<p>Agora você tem acesso a um sistema completo para agendamentos de consultas médicas. Teste</p>
 					<p>
           				<a class="btn btn-lg btn-primary" href="<%=request.getContextPath()%>/firstAppointment.jsp"><%=Msg.getProperty("button.appointment")%></a>
         			</p>
