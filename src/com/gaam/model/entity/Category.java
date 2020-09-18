@@ -11,25 +11,39 @@ public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int categoryId;
 	private String name;
+	private String test;
 	private List<Medic> medicList;
-	
+
 	public int getCategoryId() {
 		return categoryId;
 	}
+
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getTest() {
+		return test;
+	}
+
+	public void setTest(String test) {
+		this.test = test;
+	}
+
 	public List<Medic> getMedicList() {
 		return medicList;
 	}
+
 	public void setMedicList(List<Medic> medicList) {
 		this.medicList = medicList;
 	}
-	
+
 }
