@@ -19,6 +19,13 @@ public class Customer implements Serializable {
 	private String city;
 	private User user;
 	private String observation;
+	private String sex;
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	private List<InsuranceCompany> insuranceCompanyList;
 	
 	public String getName() {
